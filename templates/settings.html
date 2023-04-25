@@ -151,7 +151,10 @@
                                 </form>
                                 <form id="customColorsForm" action="/updateProfile" method="POST" target="invisibleIframe">
 
-                                    <div class="customColors grayBorder">
+                                    <div class="customColors grayBorder"
+                                        {% if user['settings']['theme'] != 'custom' %}
+                                            style="display:none;"
+                                        {% endif %}>
                                         <div class="horisontalFlex">
                                             <label for="customColorBackground">Background Color:</label>
                                             <input value="{{ user['settings']['background-color'] }}" onchange="updateCustomCSS();" type="color" name="bgColor" id="customColorBackground">
