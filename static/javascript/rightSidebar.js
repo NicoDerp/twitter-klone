@@ -9,8 +9,16 @@ function clearSearch() {
     sokfeltEl.focus();
 }
 
-function followUser(formEl) {
-    console.log(formEl);
-    formEl.parentElement.parentElement.remove();
+function followUser(form) {
+    var callback = function() {
+        form.parentElement.parentElement.remove();
+        frame.onload = null;
+    };
+
+    let frame = document.querySelector("#rightSidebarInvisibleIframe");
+
+    frame.onload = callback;
+    //form.submit();
+    return true;
 }
 
