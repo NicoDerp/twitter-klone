@@ -191,6 +191,19 @@ def getWhoToFollowForUser(user):
     return whotofollow
 
 
+def getFollowingPostsForUser(user):
+    users = getUsers()
+    users.pop(user["username"])
+
+    posts = []
+    for u in user["following"]:
+        for postID in u["posts"]:
+            post = getPostFromPostID(postID)
+            posts.append(post)
+
+    return posts
+
+
 def getPostFromPostID(postID):
     posts = getPosts()
     if postID in posts:
