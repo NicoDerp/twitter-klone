@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
-    <link rel="stylesheet" href="static/css/hoved.css">
+    <link rel="stylesheet" href="/static/css/hoved.css">
 </head>
 <style>
 
@@ -168,7 +168,7 @@
                                 <div class="inputfield">
                                     <div class="settingssTitles">Font Size</div>
                                     <div id="fontsizepreview">
-                                        Current Fontsize is {{ user['settings']['font-size'] }}x
+                                        Current Fontsize is {{ user['settings']['font-size'] }}x default fontsize
                                     </div>
                                     <div class="fontsizeflex">
 
@@ -226,14 +226,14 @@
                         <div>
                             <div class="profileDisplay">
                                 <div id="profilebanner">
-                                    <img src="static/userpics/{{ user['bannerImage'] }}"
+                                    <img src="/static/userpics/{{ user['bannerImage'] }}"
                                         alt="profilebanner" id="profilebannerimg">
 
                                 </div>
 
                                 <div id="profilePfpShare">
                                     <div>
-                                        <img src="static/userpics/{{ user['profileImage'] }}"
+                                        <img src="/static/userpics/{{ user['profileImage'] }}"
                                             alt="pfp" id="overskriftPfp" width="150" height="150">
                                     </div>
                                     <button class="genericButton vanligKnapp">Follow</button>
@@ -280,8 +280,8 @@
 
 </body>
 
-<script src="static/javascript/lib.js"></script>
-<script src="static/javascript/leftSidebar.js"></script>
+<script src="/static/javascript/lib.js"></script>
+<script src="/static/javascript/leftSidebar.js"></script>
 <script>
 
     function updateCustomCSS() {

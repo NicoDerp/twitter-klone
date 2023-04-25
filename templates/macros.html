@@ -8,12 +8,12 @@
                 <input name="v" type="text" placeholder="Search on the Bark web..." id="sokfelt"></input>
                 <div>
                     <button type="button" id="fjernQueryKnapp" class="hiddenButton">
-                        <img src="static/bilder/clear_hul.png" width="20" height="20" alt="fjernQueryKnapp">
+                        <img src="/static/bilder/clear_hul.png" width="20" height="20" alt="fjernQueryKnapp">
                     </button>
                     <button id="sokknapp" class="hiddenButton">
                         <!-- når denne trykkes skal vi navigere til en ny side som ligner
                          -->
-                        <img src="static/bilder/search_hul.png" width="25" height="25" alt="sokeknapp">
+                        <img src="/static/bilder/search_hul.png" width="25" height="25" alt="sokeknapp">
                     </button>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                             class="folgePerson hiddenButton">
                             <div>
                                 <img class="profilbilde"
-                                    src="static/userpics/{{ usertofollow['profileImage'] }}"
+                                    src="/static/userpics/{{ usertofollow['profileImage'] }}"
                                     alt="pfp" height="50" width="50">
                                 <div class="profilnavn">
                                     <div class="profilNavnNavn">{{ usertofollow['name'] }}</div>
@@ -47,9 +47,9 @@
             </div>
         </div>
 
-        <a class="bunnhoyre aatweetknapp " tabindex="0">
+        <a href="/bark" class="bunnhoyre aatweetknapp " tabindex="0">
             BARK
-            <!-- <img src="static/bilder/BARK.png" alt="tweetknapp" width="50" height="50"> -->
+            <!-- <img src="/static/bilder/BARK.png" alt="tweetknapp" width="50" height="50"> -->
         </a>
     </div>
 {% endmacro %}
@@ -59,41 +59,41 @@
     <div id="venstrekolonne">
         <div id="meny">
             <a href="/home" id="logo" class="hiddenButton">
-                <img src="static/bilder/BARK.png" width="40" alt="BARK.png" class="logoIkon">
+                <img src="/static/bilder/BARK.png" width="40" alt="BARK.png" class="logoIkon">
             </a>
             <div id="menyknapper">
                 {% if page == "home" %}
                     <a href="/home" class="boldText hiddenButton genericButton" id="menyhjem">
-                        <img src="static/bilder/home.png" height="30" alt="">
+                        <img src="/static/bilder/home.png" height="30" alt="">
                         <div class="buttonText">Hjem</div>
                     </a>
                 {% else %}
                     <a href="/home" class="hiddenButton genericButton" id="menyhjem">
-                        <img src="static/bilder/home_hul.png" height="30" alt="">
+                        <img src="/static/bilder/home_hul.png" height="30" alt="">
                         <div class="buttonText">Hjem</div>
                     </a>
                 {% endif %}
 
                 {% if page == "search" %}
                     <a href="sok?query=" class="boldText largeWidth hiddenButton genericButton" id="menysok">
-                        <img src="static/bilder/search.png" height="30" alt="">
+                        <img src="/static/bilder/search.png" height="30" alt="">
                         <div class="buttonText">Søk</div>
                     </a>
                 {% else %}
                     <a href="sok?query=" class="largeWidth hiddenButton genericButton" id="menysok">
-                        <img src="static/bilder/search_hul.png" height="30" alt="">
+                        <img src="/static/bilder/search_hul.png" height="30" alt="">
                         <div class="buttonText">Søk</div>
                     </a>
                 {% endif %}
 
                 {% if page == "profile" %}
                     <a href="/viewprofile" class="boldText hiddenButton genericButton" id="menyprofil">
-                        <img src="static/bilder/profil.png" height="30" alt="">
+                        <img src="/static/bilder/profil.png" height="30" alt="">
                         <div class="buttonText">Profil</div>
                     </a>
                 {% else %}
                     <a href="/viewprofile" class="hiddenButton genericButton" id="menyprofil">
-                        <img src="static/bilder/profil_hul.png" height="30" alt="">
+                        <img src="/static/bilder/profil_hul.png" height="30" alt="">
                         <div class="buttonText">Profil</div>
                     </a>
                 {% endif %}
@@ -101,12 +101,12 @@
 
                 {% if page == "settings" %}
                     <a href="/settings" class="boldText hiddenButton genericButton" id="menyinnstillinger">
-                        <img src="static/bilder/settings.png" height="30" alt="">
+                        <img src="/static/bilder/settings.png" height="30" alt="">
                         <div class="buttonText">Innstillinger</div>
                     </a>
                 {% else %}
                     <a href="/settings" class="hiddenButton genericButton" id="menyinnstillinger">
-                        <img src="static/bilder/settings_hul.png" height="30" alt="">
+                        <img src="/static/bilder/settings_hul.png" height="30" alt="">
                         <div class="buttonText">Innstillinger</div>
                     </a>
                 {% endif %}
@@ -119,7 +119,7 @@
 
                 <div>
                     <img class="profilbilde"
-                        src="static/userpics/{{ user['profileImage'] }}"
+                        src="/static/userpics/{{ user['profileImage'] }}"
                         alt="pfp" height="50" width="50">
                     <div class="mediumWidth profilnavn">
                         <div class="mediumWidth profilNavnNavn">{{ user['name'] }}</div>
@@ -130,7 +130,7 @@
 
                 </div>
                 <div id="mediumWidth menyindikator">
-                    <img src="static/bilder/tredots.png" width="30" height="30" alt="" class="mediumWidth">
+                    <img src="/static/bilder/tredots.png" width="30" height="30" alt="" class="mediumWidth">
                 </div>
             </button>
         </div>

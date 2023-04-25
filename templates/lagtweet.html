@@ -10,8 +10,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page </title>
-    <link rel="stylesheet" href="static/css/hoved.css">
+    <title>Lag Bark</title>
+    <link rel="stylesheet" href="/static/css/hoved.css">
 </head>
 <style>
 
@@ -47,7 +47,7 @@
                             <div class="barker">
                                 <div class="profilbildekolonne">
                                     <img class="profilbilde"
-                                        src="static/userpics/{{ user['profileImage'] }}"
+                                        src="/static/userpics/{{ user['profileImage'] }}"
                                         alt="pfp" height="50" width="50">
                                 </div>
                                 <div class="tweetkolonne ">
@@ -89,9 +89,9 @@
 
 </body>
 
-<script src="static/javascript/lib.js"></script>
-<script src="static/javascript/leftSidebar.js"></script>
-<script src="static/javascript/rightSidebar.js"></script>
+<script src="/static/javascript/lib.js"></script>
+<script src="/static/javascript/leftSidebar.js"></script>
+<script src="/static/javascript/rightSidebar.js"></script>
 <script>
     let buttonLogout = document.querySelector("#popupLogoutButton");
     buttonLogout.addEventListener("click", loggUtBruker);

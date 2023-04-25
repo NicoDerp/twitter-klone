@@ -191,6 +191,13 @@ def getWhoToFollowForUser(user):
     return whotofollow
 
 
+def getPostFromPostID(postID):
+    posts = getPosts()
+    if postID in posts:
+        return posts[postID]
+    return None
+
+
 @app.get("/favicon.ico")
 def favicon():
     try:
@@ -654,6 +661,27 @@ def bark():
 
         whotofollow = getWhoToFollowForUser(user)
         return render_template("lagtweet.html", user=user, whotofollow=whotofollow)
+    except Exception as e:
+        logError(e)
+        return f"Error {e}"
+
+
+@app.get("/viewpost/<postID>", strict_slashes=False)
+def viewpost(postID):
+    try:
+        # If user is not logged in then redirect to login page
+        if "username" not in session:
+            return redirect("/login")
+
+        username = session["username"]
+        user = getUserFromUsername(username)
+
+        if not user:
+            return redirect("/login")
+
+        post = getPostFromPostID(postID)
+        whotofollow = getWhoToFollowForUser(user)
+        return render_template("viewtweet.html", user=user, whotofollow=whotofollow, post=post)
     except Exception as e:
         logError(e)
         return f"Error {e}"
