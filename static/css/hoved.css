@@ -497,12 +497,12 @@ body.customTheme {
     margin-bottom: 10px;
 }
 
-.forfatterinfo>* {
+.forfatterinfo>div {
     margin-right: 15px;
     opacity: 0.8;
 }
 
-.forfatterinfo>*:nth-child(1) {
+.forfatterinfo>div:nth-child(1) {
     font-weight: 700;
     opacity: 1;
 }
@@ -1146,10 +1146,10 @@ input[type='range']::-webkit-slider-thumb {
 }
 .indentLinjePrime {
     height: 200px;
-    width: 2px;
+    width: 3px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #aaaaaa20;
+    background-color: #aaaaaa40;
 
 }
 .comment .profilbildekolonne {

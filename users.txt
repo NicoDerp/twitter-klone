@@ -2,7 +2,7 @@
     "nicodatboi": {
         "username": "nicodatboi",
         "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Nico",
+        "name": "Nicolai Buch",
         "profileImage": "nicodatboi_profileImage.png",
         "bannerImage": "nicodatboi_bannerImage.png",
         "bannerColor": "#808080",
@@ -10,7 +10,9 @@
             "0",
             "1"
         ],
-        "followers": [],
+        "followers": [
+            "test"
+        ],
         "following": [
             "aboardThrush9",
             "goofyApricots2",
@@ -25,14 +27,14 @@
             "ooga"
         ],
         "pinnedPost": null,
-        "bio": "My bio is very cool",
+        "bio": "My bio is very cool and is very informative",
         "status": "Offline",
         "location": "Norway",
         "joined": "2023-04-23 11:27:12",
         "settings": {
             "theme": "dark",
-            "background-color": "#d35f5f",
-            "text-color": "#2406bc",
+            "background-color": "#ffc282",
+            "text-color": "#000000",
             "font": "Inter",
             "font-size": "1"
         }
@@ -308,6 +310,33 @@
         "joined": "2023-04-23 11:54:23",
         "settings": {
             "theme": "ligt",
+            "background-color": "#ffffff",
+            "text-color": "#000000",
+            "font": "Inter",
+            "font-size": "1em"
+        }
+    },
+    "test": {
+        "username": "test",
+        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
+        "name": "Test Bruker",
+        "profileImage": "default_pfp.png",
+        "bannerImage": "default_banner.png",
+        "bannerColor": "#808080",
+        "posts": [
+            "3"
+        ],
+        "followers": [],
+        "following": [
+            "nicodatboi"
+        ],
+        "pinnedPost": null,
+        "bio": "Nothing yet...",
+        "status": "Offline",
+        "location": "Oslo",
+        "joined": "2023-04-25 22:28:37",
+        "settings": {
+            "theme": "light",
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
