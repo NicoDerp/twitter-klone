@@ -3,7 +3,7 @@
 let profil = document.querySelector(".profil > button");
 let popupElement = document.querySelector("#popupLogout");
 
-document.querySelector("#overskriftfollowing").addEventListener("focus", gjemPopup)
+//document.querySelector("#overskriftfollowing").addEventListener("focus", gjemPopup)
 popupElement.addEventListener("blur", gjemPopup);
 
 profil.addEventListener("focus", visPopup);

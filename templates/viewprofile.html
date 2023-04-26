@@ -111,7 +111,7 @@
                                     <div class="forfatterinfo">
                                         <div>{{ otherUser['name'] }}</div>
                                         <div>@{{ otherUser['username'] }}</div>
-                                        <div>{{ posts[postID]['timeSincePost'] }}</div>
+                                        <div>{{ posts[postID]['timeSincePosted'] }}</div>
                                     </div>
                                     <div class="tweettekst">
                                         {{ posts[postID]['content'] }}
@@ -120,11 +120,11 @@
 
                                     <div class="tweetknapper">
 
-                                        <button title="trykk for å legge til en kommentar"
+                                        <a href="/viewpost/{{ postID }}" title="trykk for å legge til en kommentar"
                                             class="tweetknappkommentar tweetknapp genericButton hiddenButton">
                                             <span title="10000">{{ posts[postID]['comments']|length }}</span>
                                             <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
-                                        </button>
+                                        </a>
 
                                         <button title="trykk for å retweete"
                                             class="tweetknappretweet tweetknapp genericButton hiddenButton">
@@ -135,7 +135,7 @@
 
                                         <button title="trykk for å like"
                                             class="tweetknapplikes tweetknapp genericButton hiddenButton">
-                                            <span title="10000">{{ posts[postID]['likes'] }}</span>
+                                            <span title="10000">{{ posts[postID]['likes']|length }}</span>
                                             <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
 
                                         </button>

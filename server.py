@@ -71,11 +71,12 @@ def newPost(username, content):
 
     post = {
         "username": username,
+        "isPost": True,
         "content": content,
         "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "comments": [],
+        "likes": [],
         "retweets": 10,
-        "likes": 20,
         "views": 10,
     }
 
@@ -94,16 +95,66 @@ def newPost(username, content):
     return postID
 
 
+def newComment(username, targetPostID, content):
+    with open("posts.txt", "r") as f:
+        posts = json.load(f)
+
+    comment = {
+        "username": username,
+        "isPost": False,
+        "content": content,
+        "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "comments": [],
+        "likes": [],
+        "retweets": 10,
+        "views": 10,
+    }
+
+    commentID = str(posts["count"])
+    posts["posts"][commentID] = comment
+    posts["count"] += 1
+
+    posts["posts"][targetPostID]["comments"].append(commentID)
+
+    with open("posts.txt", "w") as f:
+        json.dump(posts, f, default=str, indent=4)
+
+    users = getUsers()
+    users[username]["comments"].append(commentID)
+
+    saveUsers(users)
+
+    return commentID
+
+
 def getPosts():
     with open("posts.txt", "r") as f:
         posts = json.load(f)
 
-    posts = posts["posts"]
+    allposts = posts["posts"]
+    posts = {}
 
     currentTime = datetime.datetime.now()
-    for postID in posts:
-        posts[postID]["timePosted"] = datetime.datetime.strptime(posts[postID]["timePosted"], "%Y-%m-%d %H:%M:%S")
-        posts[postID]["timeSincePost"] = prettyFormatTime(currentTime, posts[postID]["timePosted"])
+    for postID in allposts:
+        post = allposts[postID]
+        #if not post["isPost"]:
+        #    continue
+
+        post["timePosted"] = datetime.datetime.strptime(post["timePosted"], "%Y-%m-%d %H:%M:%S")
+        post["timeSincePosted"] = prettyFormatTime(currentTime, post["timePosted"])
+        #posts[postID]["comments"] = [getCommentFromCommentID(commentID) for commentID in posts[postID]["comments"]]
+
+        posts[postID] = post
+
+    return posts
+
+
+def getPostsForUser(user):
+    allposts = getPosts()
+    posts = {}
+
+    for postID in user["posts"]:
+        posts[postID] = allposts[postID]
 
     return posts
 
@@ -157,12 +208,14 @@ def newUser(username, password, name):
                 "bannerImage": "default_banner.png",
                 "bannerColor": "#808080",
                 "posts": [],
+                "comments": [],
                 "followers": [],
                 "following": [],
+                "likedPosts": [],
                 "pinnedPost": None,
-                "bio": "Nothing yet...",
+                "bio": "",
                 "status": "Offline",
-                "location": "Mars",
+                "location": "",
                 "joined": datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S"),
                 "settings": {
                     "theme": "light",
@@ -208,9 +261,22 @@ def getFollowingPostsForUser(user):
 
 def getPostFromPostID(postID):
     posts = getPosts()
+
     if postID in posts:
-        return posts[postID]
+        post = posts[postID]
+        post["comments"] = [getPostFromPostID(commentID) for commentID in posts[postID]["comments"]]
+        return post
+
     return None
+
+
+def getCommentUsersForPost(post):
+    allUsers = getUsers()
+    commentUsers = {}
+    for comment in post["comments"]:
+        username = comment["username"]
+        commentUsers[username] = allUsers[username]
+    return commentUsers
 
 
 @app.get("/favicon.ico")
@@ -314,8 +380,7 @@ def registerPOST():
     try:
         username = request.form.get("brukernavn")
         password = request.form.get("passord")
-        name = request.form.get("navn")
-        if not username or not password or not name:
+        if not username or not password:
             return render_template("registrere.html", error="Error in form")
 
         #posts = {
@@ -329,7 +394,7 @@ def registerPOST():
 
         # comments follow same structure as posts
 
-        success = newUser(username, password, name)
+        success = newUser(username, password, "")
         if not success:
             logInfo("Username already exists")
             return render_template("registrere.html", error="Username already exists")
@@ -358,7 +423,7 @@ def viewprofile():
 
         username = request.args.get("brukernavn", default=session["username"], type=str)
         otherUser = getUserFromUsername(username)
-        posts = getPosts()
+        posts = getPostsForUser(otherUser)
         #comments = getComments()
         whotofollow = getWhoToFollowForUser(user)
         return render_template("viewprofile.html", user=user, whotofollow=whotofollow, otherUser=otherUser, posts=posts)
@@ -696,7 +761,8 @@ def viewpost(postID):
         post = getPostFromPostID(postID)
         postOwner = getUserFromUsername(post['username'])
         whotofollow = getWhoToFollowForUser(user)
-        return render_template("viewtweet.html", user=user, whotofollow=whotofollow, post=post, postOwner=postOwner)
+        commentUsers = getCommentUsersForPost(post)
+        return render_template("viewtweet.html", user=user, whotofollow=whotofollow, post=post, postOwner=postOwner, commentUsers=commentUsers)
     except Exception as e:
         logError(e)
         return f"Error {e}"

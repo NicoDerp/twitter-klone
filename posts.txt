@@ -1,40 +1,36 @@
 {
-    "count": 4,
+    "count": 3,
     "posts": {
         "0": {
             "username": "nicodatboi",
+            "isPost": true,
             "content": "This is a cool tweet",
-            "timePosted": "2023-04-23 11:27:12",
-            "comments": [],
+            "timePosted": "2023-04-26 17:23:49",
+            "comments": [
+                "2"
+            ],
+            "likes": [],
             "retweets": 10,
-            "likes": 20,
             "views": 10
         },
         "1": {
-            "username": "nicodatboi",
-            "content": "Hei",
-            "timePosted": "2023-04-23 11:55:41",
+            "username": "ooga",
+            "isPost": true,
+            "content": "This is a cool tweet",
+            "timePosted": "2023-04-26 17:36:54",
             "comments": [],
+            "likes": [],
             "retweets": 10,
-            "likes": 20,
             "views": 10
         },
         "2": {
             "username": "ooga",
-            "content": "Noe veldig kult",
-            "timePosted": "2023-04-23 11:56:11",
+            "isPost": false,
+            "content": "Super cool comment",
+            "timePosted": "2023-04-26 17:48:02",
             "comments": [],
+            "likes": [],
             "retweets": 10,
-            "likes": 20,
-            "views": 10
-        },
-        "3": {
-            "username": "test",
-            "content": "This is a cool tweet",
-            "timePosted": "2023-04-25 22:28:37",
-            "comments": [],
-            "retweets": 10,
-            "likes": 20,
             "views": 10
         }
     }

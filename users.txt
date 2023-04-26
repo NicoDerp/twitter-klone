@@ -7,282 +7,19 @@
         "bannerImage": "nicodatboi_bannerImage.png",
         "bannerColor": "#808080",
         "posts": [
-            "0",
-            "1"
+            "0"
         ],
-        "followers": [
-            "test"
-        ],
-        "following": [
-            "aboardThrush9",
-            "goofyApricots2",
-            "unhappyHeron8",
-            "grumpySmelt6",
-            "somberDunbird3",
-            "cheerfulCamel0",
-            "jubilantBurritos1",
-            "goofyWasp8",
-            "soreFish0",
-            "anxiousSeahorse0",
-            "ooga"
-        ],
+        "comments": [],
+        "followers": [],
+        "following": [],
+        "likedPosts": [],
         "pinnedPost": null,
-        "bio": "My bio is very cool and is very informative",
+        "bio": "My very cool bio",
         "status": "Offline",
         "location": "Norway",
-        "joined": "2023-04-23 11:27:12",
+        "joined": "2023-04-26 17:23:49",
         "settings": {
             "theme": "light",
-            "background-color": "#ffc282",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1"
-        }
-    },
-    "aboardThrush9": {
-        "username": "aboardThrush9",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Bette Early",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "goofyApricots2": {
-        "username": "goofyApricots2",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Jamie Fellman",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "unhappyHeron8": {
-        "username": "unhappyHeron8",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Tiffany Higgs",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "grumpySmelt6": {
-        "username": "grumpySmelt6",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Stephen Gunter",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "somberDunbird3": {
-        "username": "somberDunbird3",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Julie Walker",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "cheerfulCamel0": {
-        "username": "cheerfulCamel0",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Jesus Hite",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "jubilantBurritos1": {
-        "username": "jubilantBurritos1",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Ramon Mcneil",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "goofyWasp8": {
-        "username": "goofyWasp8",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Marilyn Luckhardt",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "soreFish0": {
-        "username": "soreFish0",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Helen Sivertsen",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "anxiousSeahorse0": {
-        "username": "anxiousSeahorse0",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Maria Jones",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:51:55",
-        "settings": {
-            "theme": "ligt",
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
@@ -291,50 +28,25 @@
     },
     "ooga": {
         "username": "ooga",
-        "hashedPassword": "dbd3b3fcc3286d927ec214c5648fbb226353a239789750f51430b1e6e9d91f4f",
-        "name": "Ooga Berntsen",
+        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
+        "name": "Ooga Booga",
         "profileImage": "default_pfp.png",
         "bannerImage": "default_banner.png",
         "bannerColor": "#808080",
         "posts": [
+            "1"
+        ],
+        "comments": [
             "2"
         ],
-        "followers": [
-            "nicodatboi"
-        ],
-        "following": [],
-        "pinnedPost": null,
-        "bio": "Nothing yet...",
-        "status": "Offline",
-        "location": "Mars",
-        "joined": "2023-04-23 11:54:23",
-        "settings": {
-            "theme": "ligt",
-            "background-color": "#ffffff",
-            "text-color": "#000000",
-            "font": "Inter",
-            "font-size": "1em"
-        }
-    },
-    "test": {
-        "username": "test",
-        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-        "name": "Test Bruker",
-        "profileImage": "default_pfp.png",
-        "bannerImage": "default_banner.png",
-        "bannerColor": "#808080",
-        "posts": [
-            "3"
-        ],
         "followers": [],
-        "following": [
-            "nicodatboi"
-        ],
+        "following": [],
+        "likedPosts": [],
         "pinnedPost": null,
-        "bio": "Nothing yet...",
+        "bio": "",
         "status": "Offline",
-        "location": "Oslo",
-        "joined": "2023-04-25 22:28:37",
+        "location": "",
+        "joined": "2023-04-26 17:36:54",
         "settings": {
             "theme": "light",
             "background-color": "#ffffff",
