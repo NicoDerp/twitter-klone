@@ -111,7 +111,7 @@
                                     <div class="forfatterinfo">
                                         <div>{{ otherUser['name'] }}</div>
                                         <div>@{{ otherUser['username'] }}</div>
-                                        <div>{{ prettyFormatTime(currentTime, posts[postID]['timePosted']) }}</div>
+                                        <div>{{ posts[postID]['timeSincePost'] }}</div>
                                     </div>
                                     <div class="tweettekst">
                                         {{ posts[postID]['content'] }}

@@ -100,8 +100,10 @@ def getPosts():
 
     posts = posts["posts"]
 
+    currentTime = datetime.datetime.now()
     for postID in posts:
         posts[postID]["timePosted"] = datetime.datetime.strptime(posts[postID]["timePosted"], "%Y-%m-%d %H:%M:%S")
+        posts[postID]["timeSincePost"] = prettyFormatTime(currentTime, posts[postID]["timePosted"])
 
     return posts
 
@@ -358,9 +360,8 @@ def viewprofile():
         otherUser = getUserFromUsername(username)
         posts = getPosts()
         #comments = getComments()
-        currentTime = datetime.datetime.now()
         whotofollow = getWhoToFollowForUser(user)
-        return render_template("viewprofile.html", user=user, whotofollow=whotofollow, otherUser=otherUser, posts=posts, currentTime=currentTime, prettyFormatTime=prettyFormatTime)
+        return render_template("viewprofile.html", user=user, whotofollow=whotofollow, otherUser=otherUser, posts=posts)
     except Exception as e:
         logError(e)
         return f"Error {e}"
@@ -693,8 +694,9 @@ def viewpost(postID):
             return redirect("/login")
 
         post = getPostFromPostID(postID)
+        postOwner = getUserFromUsername(post['username'])
         whotofollow = getWhoToFollowForUser(user)
-        return render_template("viewtweet.html", user=user, whotofollow=whotofollow, post=post)
+        return render_template("viewtweet.html", user=user, whotofollow=whotofollow, post=post, postOwner=postOwner)
     except Exception as e:
         logError(e)
         return f"Error {e}"

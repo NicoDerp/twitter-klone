@@ -56,15 +56,27 @@
                                         <div>@{{ user['username'] }}</div>
                                         <div>14h</div>
                                     </div>
-                                    <div class="tweettekst">
-                                         <textarea name="" id="tweetTextArea" cols="30" rows="10" placeholder="Want to bark?"></textarea>
+                                    <div class="tweetInputs">
+                                        <div class="tweettekstBark">
+                                            <textarea name="" id="tweetTextArea" cols="30" rows="10"
+                                                placeholder="Want to bark?"></textarea>
+                                            <div class="characterIndicator">230/250</div>
+                                        </div>
+                                        <div class="tweetImagePreview" style="display: block;">
+                                            <img src="/static/bilder/comment_hul.png" alt="">
+                                        </div>
                                     </div>
-
-
-
-
+                                    <div class="tweetBottomRow">
+                                        <div class="tweetUploads">
+                                            <button id="tweetUploadButton" class="hiddenButton">
+                                                <img src="/static/bilder/imageupload.png" width="45" height="45" alt="icon">
+                                            </button>
+                                            <input style="display: none;" type="file" name="tweetUploadInput"
+                                                id="tweetUploadInput" accept="image/*">
+                                        </div>
+                                        <button class="aatweetknapp">BARK</button>
+                                    </div>
                                 </div>
-
                                 <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
 
 

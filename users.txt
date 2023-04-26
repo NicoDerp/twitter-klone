@@ -32,7 +32,7 @@
         "location": "Norway",
         "joined": "2023-04-23 11:27:12",
         "settings": {
-            "theme": "dark",
+            "theme": "light",
             "background-color": "#ffc282",
             "text-color": "#000000",
             "font": "Inter",
