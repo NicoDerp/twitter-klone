@@ -69,8 +69,11 @@ def newPost(username, content):
     with open("posts.txt", "r") as f:
         posts = json.load(f)
 
+    postID = str(posts["count"])
+
     post = {
         "username": username,
+        "id": postID,
         "isPost": True,
         "content": content,
         "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -80,7 +83,6 @@ def newPost(username, content):
         "views": 10,
     }
 
-    postID = str(posts["count"])
     posts["posts"][postID] = post
     posts["count"] += 1
 
@@ -99,8 +101,11 @@ def newComment(username, targetPostID, content):
     with open("posts.txt", "r") as f:
         posts = json.load(f)
 
+    commentID = str(posts["count"])
+
     comment = {
         "username": username,
+        "id": commentID,
         "isPost": False,
         "content": content,
         "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -110,7 +115,6 @@ def newComment(username, targetPostID, content):
         "views": 10,
     }
 
-    commentID = str(posts["count"])
     posts["posts"][commentID] = comment
     posts["count"] += 1
 
@@ -131,20 +135,13 @@ def getPosts():
     with open("posts.txt", "r") as f:
         posts = json.load(f)
 
-    allposts = posts["posts"]
-    posts = {}
+    posts = posts["posts"]
 
     currentTime = datetime.datetime.now()
-    for postID in allposts:
-        post = allposts[postID]
-        #if not post["isPost"]:
-        #    continue
-
-        post["timePosted"] = datetime.datetime.strptime(post["timePosted"], "%Y-%m-%d %H:%M:%S")
-        post["timeSincePosted"] = prettyFormatTime(currentTime, post["timePosted"])
+    for postID in posts:
+        posts[postID]["timePosted"] = datetime.datetime.strptime(posts[postID]["timePosted"], "%Y-%m-%d %H:%M:%S")
+        posts[postID]["timeSincePosted"] = prettyFormatTime(currentTime, posts[postID]["timePosted"])
         #posts[postID]["comments"] = [getCommentFromCommentID(commentID) for commentID in posts[postID]["comments"]]
-
-        posts[postID] = post
 
     return posts
 
@@ -763,6 +760,51 @@ def viewpost(postID):
         whotofollow = getWhoToFollowForUser(user)
         commentUsers = getCommentUsersForPost(post)
         return render_template("viewtweet.html", user=user, whotofollow=whotofollow, post=post, postOwner=postOwner, commentUsers=commentUsers)
+    except Exception as e:
+        logError(e)
+        return f"Error {e}"
+
+
+@app.post("/toggleLike")
+def toggleLike():
+    try:
+        postID = request.form.get("postID")
+        if not postID:
+            logError("Error in post in toggleLike")
+            return "a"
+
+        if "username" not in session:
+            logError("Not logged in")
+            return "a"
+
+        username = session["username"]
+
+        users = getUsers()
+        if username not in users:
+            logError("Not logged in")
+            return "a"
+
+        with open("posts.txt", "r") as f:
+            posts = json.load(f)
+
+        if postID not in posts["posts"]:
+            logError(f"Can't follow post with postID {postID} because the post does not exist")
+            return "a"
+
+        if postID in users[username]["likedPosts"]:
+            posts["posts"][postID]["likes"] -= 1
+            users[username]["likedPosts"].remove(postID)
+        else:
+            posts["posts"][postID]["likes"] += 1
+            users[username]["likedPosts"].append(postID)
+
+        saveUsers(users)
+
+        with open("posts.txt", "w") as f:
+            json.dump(posts, f, default=str, indent=4)
+
+        return "a"
+
     except Exception as e:
         logError(e)
         return f"Error {e}"

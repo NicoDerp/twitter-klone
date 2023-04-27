@@ -41,14 +41,17 @@
         ],
         "followers": [],
         "following": [],
-        "likedPosts": [],
+        "likedPosts": [
+            "0",
+            "2"
+        ],
         "pinnedPost": null,
         "bio": "",
         "status": "Offline",
         "location": "",
         "joined": "2023-04-26 17:36:54",
         "settings": {
-            "theme": "light",
+            "theme": "dark",
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",

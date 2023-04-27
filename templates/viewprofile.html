@@ -133,12 +133,19 @@
 
                                         </button>
 
-                                        <button title="trykk for å like"
-                                            class="tweetknapplikes tweetknapp genericButton hiddenButton">
-                                            <span title="10000">{{ posts[postID]['likes']|length }}</span>
-                                            <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
+                                        <form action="/toggleLike" method="POST" target="invisibleIframe">
+                                            <button onclick="toggleHeart(this);" title="trykk for å like"
+                                                class="tweetknapplikes tweetknapp genericButton hiddenButton">
+                                                <span title="10000">{{ posts[postID]['likes'] }}</span>
+                                                {% if postID in user["likedPosts"] %}
+                                                    <img src="/static/bilder/heart.png" height="20" alt="Likes">
+                                                {% else %}
+                                                    <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
+                                                {% endif %}
 
-                                        </button>
+                                            </button>
+                                            <input type="hidden" name="postID" value="{{ postID }}">
+                                        </form>
 
                                         <button title="Views" class="tweetknappviews tweetknapp genericButton hidden">
                                             <span title="10000">{{ posts[postID]['views'] }}</span>
@@ -155,6 +162,8 @@
             </div>
         </div>
     </div>
+
+    <iframe style="display: none;" name="invisibleIframe"></iframe>
 </body>
 
 <script src="/static/javascript/lib.js"></script>

@@ -334,3 +334,16 @@ eksempel på retweet-objekt:
 }
 */
 
+function toggleHeart(button) {
+    let img = button.getElementsByTagName("img")[0];
+    let count = button.getElementsByTagName("span")[0];
+
+    if (img.src.endsWith("/static/bilder/heart.png")) {
+        img.src = "/static/bilder/heart_hul.png";
+        count.innerHTML = parseInt(count.innerHTML) - 1;
+    } else {
+        img.src = "/static/bilder/heart.png";
+        count.innerHTML = parseInt(count.innerHTML) + 1;
+    }
+}
+
