@@ -171,11 +171,11 @@
 
                                                 <div class="tweetknapper">
 
-                                                    <button title="trykk for å legge til en kommentar"
+                                                    <a href="/viewpost/{{ comment['id'] }}" title="trykk for å legge til en kommentar"
                                                         class="tweetknappkommentar tweetknapp genericButton hiddenButton">
                                                         <span title="10000">{{ comment['comments']|length }}</span>
                                                         <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
-                                                    </button>
+                                                    </a>
 
                                                     <button title="trykk for å retweete"
                                                         class="tweetknappretweet tweetknapp genericButton hiddenButton">

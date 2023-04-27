@@ -32,7 +32,7 @@
             "content": "Super cool comment",
             "timePosted": "2023-04-26 17:48:02",
             "comments": [],
-            "likes": 0,
+            "likes": 1,
             "retweets": 10,
             "views": 10
         }
