@@ -78,7 +78,7 @@ def newPost(username, content):
         "content": content,
         "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "comments": [],
-        "likes": [],
+        "likes": 0,
         "retweets": 10,
         "views": 10,
     }
@@ -110,7 +110,7 @@ def newComment(username, targetPostID, content):
         "content": content,
         "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "comments": [],
-        "likes": [],
+        "likes": 0,
         "retweets": 10,
         "views": 10,
     }
@@ -809,6 +809,42 @@ def toggleLike():
             json.dump(posts, f, default=str, indent=4)
 
         return "a"
+
+    except Exception as e:
+        logError(e)
+        return f"Error {e}"
+
+
+@app.post("/reply")
+def reply():
+    try:
+        targetPostID = request.form.get("postID")
+        content = request.form.get("content")
+        if not targetPostID or not content:
+            logError("Error in post in reply")
+            return "error"
+
+        if "username" not in session:
+            logError("Not logged in")
+            return redirect("/login")
+
+        username = session["username"]
+
+        users = getUsers()
+        if username not in users:
+            logError("Not logged in")
+            return redirect("/login")
+
+        #if postID not in posts["posts"]:
+        #    logError(f"Can't reply to post with postID {postID} because the post does not exist")
+        #    return "a"
+
+        commentID = newComment(username, targetPostID, content)
+        users[username]["comments"].append(commentID)
+
+        saveUsers(users)
+
+        return redirect(f"/viewpost/{targetPostID}")
 
     except Exception as e:
         logError(e)

@@ -120,27 +120,31 @@
                                             <div>Reply to @{{ postOwner['username'] }}</div>
                                         </div>
                                     </div>
-                                    <div class="tweetInputs">
-                                        <div class="tweettekstBark">
-                                            <textarea name="" id="tweetTextArea" cols="30" rows="10"
-                                                placeholder="Want to bark?"></textarea>
-                                            <div class="characterIndicator">230/250</div>
-                                        </div>
-                                        <div class="tweetImagePreview" style="display: none;">
-                                            <img src="/static/bilder/comment_hul.png" alt="">
-                                        </div>
-                                    </div>
 
-                                    <div class="tweetBottomRow">
-                                        <div class="tweetUploads">
-                                            <button id="tweetUploadButton" class="hiddenButton">
-                                                <img src="/static/bilder/imageupload.png" width="45" height="45" alt="icon">
-                                            </button>
-                                            <input style="display: none;" type="file" name="tweetUploadInput"
-                                                id="tweetUploadInput" accept="image/*">
+                                    <form action="/reply" method="POST">
+                                        <div class="tweetInputs">
+                                            <div class="tweettekstBark">
+                                                <textarea name="content" id="tweetTextArea" cols="30" rows="10"
+                                                    placeholder="Want to bark?"></textarea>
+                                                <div class="characterIndicator">230/250</div>
+                                            </div>
+                                            <div class="tweetImagePreview" style="display: none;">
+                                                <img src="/static/bilder/comment_hul.png" alt="">
+                                            </div>
                                         </div>
-                                        <button class="aatweetknapp">Reply</button>
-                                    </div>
+
+                                        <div class="tweetBottomRow">
+                                            <div class="tweetUploads">
+                                                <button type="button" id="tweetUploadButton" class="hiddenButton">
+                                                    <img src="/static/bilder/imageupload.png" width="45" height="45" alt="icon">
+                                                </button>
+                                                <input style="display: none;" type="file" name="tweetUploadInput"
+                                                    id="tweetUploadInput" accept="image/*">
+                                            </div>
+                                            <button class="aatweetknapp">Reply</button>
+                                        </div>
+                                        <input type="hidden" name="postID" value="{{ post['id'] }}">
+                                    </form>
 
 
 
