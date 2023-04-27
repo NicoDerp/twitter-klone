@@ -52,63 +52,61 @@
                         </div>
                     </div>
                     <div id="feed">
-
-
-
-
-
-
-
-
-
-
-                        <div class="tweet">
-                            <div class="profilbildekolonne">
-                                <img class="profilbilde"
-                                    src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png"
-                                    alt="pfp" height="50" width="50">
-                            </div>
-                            <div class="tweetkolonne">
-                                <div class="forfatterinfo">
-                                    <div>Name Lastname</div>
-                                    <div>@elonmusk</div>
-                                    <div>14h</div>
+                        {% for post in posts %}
+                            <div class="tweet">
+                                <div class="profilbildekolonne">
+                                    <img class="profilbilde"
+                                        src="/static/userpics/{{ post['user']['profileImage'] }}"
+                                        alt="pfp" height="50" width="50">
                                 </div>
-                                <div class="tweettekst">
-                                    I am a tweet
-                                </div>
-                                <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
+                                <div class="tweetkolonne">
+                                    <div class="forfatterinfo">
+                                        <div>{{ post['user']['name'] }}</div>
+                                        <div>{{ post['user']['username'] }}</div>
+                                        <div>{{ post['timeSincePosted'] }}</div>
+                                    </div>
+                                    <div class="tweettekst">
+                                        {{ post['content'] }}
+                                    </div>
+                                    <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
 
-                                <div class="tweetknapper">
+                                    <div class="tweetknapper">
 
-                                    <button title="trykk for å legge til en kommentar"
-                                        class="tweetknappkommentar tweetknapp genericButton hiddenButton">
-                                        <span title="10000">10.0k</span>
-                                        <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
-                                    </button>
+                                        <a href="/viewpost/{{ post['id'] }}" title="trykk for å legge til en kommentar"
+                                            class="tweetknappkommentar tweetknapp genericButton hiddenButton">
+                                            <span title="10000">{{ post['comments']|length }}</span>
+                                            <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
+                                        </a>
 
-                                    <button title="trykk for å retweete"
-                                        class="tweetknappretweet tweetknapp genericButton hiddenButton">
-                                        <span title="10000">10.0k</span>
-                                        <img src="/static/bilder/retweet_hul.png" height="20" alt="Retweets">
+                                        <button title="trykk for å retweete"
+                                            class="tweetknappretweet tweetknapp genericButton hiddenButton">
+                                            <span title="10000">{{ post['retweets'] }}</span>
+                                            <img src="/static/bilder/retweet_hul.png" height="20" alt="Retweets">
 
-                                    </button>
+                                        </button>
 
-                                    <button title="trykk for å like"
-                                        class="tweetknapplikes tweetknapp genericButton hiddenButton">
-                                        <span title="10000">10.0k</span>
-                                        <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
+                                        <form action="/toggleLike" method="POST" target="invisibleIframe">
+                                            <button onclick="toggleHeart(this);" title="trykk for å like"
+                                                class="tweetknapplikes tweetknapp genericButton hiddenButton">
+                                                <span title="10000">{{ post['likes'] }}</span>
+                                                {% if post['id'] in user["likedPosts"] %}
+                                                    <img src="/static/bilder/heart.png" height="20" alt="Likes">
+                                                {% else %}
+                                                    <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
+                                                {% endif %}
+                                            </button>
+                                            <input type="hidden" name="postID" value="{{ post['id'] }}">
+                                        </form>
 
-                                    </button>
+                                        <button title="Views" class="tweetknappviews tweetknapp genericButton hidden">
+                                            <span title="10000">{{ post['views'] }}</span>
+                                            <img src="/static/bilder/eye_hul.png" height="30" alt="Views">
 
-                                    <button title="Views" class="tweetknappviews tweetknapp genericButton hidden">
-                                        <span title="10000">10.0k</span>
-                                        <img src="/static/bilder/eye_hul.png" height="30" alt="Views">
-
-                                    </button>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
 
                 </div>
@@ -123,7 +121,7 @@
 
 
 
-
+    <iframe style="display: none;" name="invisibleIframe"></iframe>
 </body>
 
 <script src="/static/javascript/lib.js"></script>

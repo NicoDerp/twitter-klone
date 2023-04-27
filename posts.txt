@@ -21,7 +21,7 @@
             "content": "This is a cool tweet",
             "timePosted": "2023-04-26 17:36:54",
             "comments": [],
-            "likes": 1,
+            "likes": 2,
             "retweets": 10,
             "views": 10
         },

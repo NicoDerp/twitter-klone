@@ -11,15 +11,19 @@
         ],
         "comments": [],
         "followers": [],
-        "following": [],
-        "likedPosts": [],
+        "following": [
+            "ooga"
+        ],
+        "likedPosts": [
+            "1"
+        ],
         "pinnedPost": null,
         "bio": "My very cool bio",
         "status": "Offline",
         "location": "Norway",
         "joined": "2023-04-26 17:23:49",
         "settings": {
-            "theme": "light",
+            "theme": "dark",
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
@@ -39,7 +43,9 @@
         "comments": [
             "2"
         ],
-        "followers": [],
+        "followers": [
+            "nicodatboi"
+        ],
         "following": [],
         "likedPosts": [
             "0",

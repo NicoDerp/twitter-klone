@@ -247,10 +247,14 @@ def getFollowingPostsForUser(user):
     users = getUsers()
     users.pop(user["username"])
 
+    allposts = getPosts()
+
     posts = []
-    for u in user["following"]:
+    for un in user["following"]:
+        u = users[un]
         for postID in u["posts"]:
-            post = getPostFromPostID(postID)
+            post = allposts[postID]
+            post["user"] = u  # TODO only pass items that matter
             posts.append(post)
 
     return posts
@@ -321,8 +325,9 @@ def home():
         if not user:
             return redirect("/login")
 
+        posts = getFollowingPostsForUser(user)
         whotofollow = getWhoToFollowForUser(user)
-        return render_template("home.html", user=user, whotofollow=whotofollow)
+        return render_template("home.html", user=user, posts=posts, whotofollow=whotofollow)
     except Exception as e:
         logError(e)
         return f"Error {e}"
