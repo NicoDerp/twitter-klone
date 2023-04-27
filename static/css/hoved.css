@@ -542,6 +542,10 @@ body.customTheme {
     margin-right: 5px;
 }
 
+input,
+textarea {
+    position: relative;
+}
 
 #popupLogout {
     display: none;
@@ -551,7 +555,7 @@ body.customTheme {
     /* width: 300px; */
     background-color: #aaaaaa20;
     ;
-    z-index: 2;
+    z-index: -99999999;
     padding: 15px;
     border-radius: 20px;
     min-width: 170px;
@@ -609,7 +613,7 @@ body.customTheme {
         margin-right: 0px;
     }
 
-    .genericButton:not(#profilePfpShare *,#setupProfile * ) {
+    .genericButton:not(#profilePfpShare *, #setupProfile *, #midtkolonne *,#popupLogout *) {
         padding: 10px;
         margin: 0 auto;
     }
@@ -649,6 +653,99 @@ body.customTheme {
 
 }
 
+.telefontweeting {
+    display: none;
+}
+
+@media only screen and (max-width: 450px) {
+    #menyprofil, #menyinnstillinger {
+        display: none;
+    }
+    .bunnhoyre,
+    .fixedbunnhoyre {
+        display: none;
+    }
+
+    .verySmallWidth {
+        display: none;
+    }
+
+    .hovedflex {
+        flex-direction: column-reverse;
+        height: 100%;
+    }
+
+    #venstrekolonne {
+        position: fixed;
+        bottom: 0;
+        flex-direction: row;
+        width: 100%;
+        top: auto;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        border-top: rgba(222, 230, 232, 0.6) solid 1px;
+        height: 70px;
+        z-index: 2;
+        justify-content: center;
+        background-color: var(--globalbg);
+    }
+
+    #meny {
+        flex-direction: row;
+
+    }
+    #logo.hiddenButton {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #menyknapper {
+        flex-direction: row;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .genericButton:not(#profilePfpShare *, #setupProfile *, #midtkolonne *, #popupLogout *) {
+        margin-left: 2.5px;
+        margin-right: 2.5px;
+        padding: 10px;
+        height: min-content;
+    }
+
+    .container {
+        height: 100vh;
+    }
+
+    .telefontweeting {
+        position: fixed;
+        display: block;
+        bottom: 75px;
+        right: 5px;
+        margin: none;
+        padding: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #feed {
+        bottom: auto;
+        top: 0px;
+        /* padding-bottom: 100px; */
+
+        /* padding-top: 100000px; */
+
+        height: 10px;
+        width: 100%;
+    }
+
+    #feed>*:last-child {
+        margin-bottom: 100px;
+    }
+
+
+
+
+}
 
 .profileDisplay {
     position: relative;

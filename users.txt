@@ -43,7 +43,7 @@
         "following": [],
         "likedPosts": [
             "0",
-            "2"
+            "1"
         ],
         "pinnedPost": null,
         "bio": "",
