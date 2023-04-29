@@ -1,5 +1,5 @@
 {
-    "count": 9,
+    "count": 11,
     "posts": {
         "0": {
             "username": "nicodatboi",
@@ -8,9 +8,10 @@
             "content": "This is a cool tweet",
             "timePosted": "2023-04-26 17:23:49",
             "comments": [
-                "2"
+                "2",
+                "9"
             ],
-            "likes": 1,
+            "likes": 2,
             "retweets": 10,
             "views": 10
         },
@@ -105,6 +106,28 @@
             "isPost": false,
             "content": "Wow so cool!",
             "timePosted": "2023-04-29 22:08:09",
+            "comments": [],
+            "likes": 1,
+            "retweets": 10,
+            "views": 10
+        },
+        "9": {
+            "username": "nicodatboi",
+            "id": "9",
+            "isPost": false,
+            "content": "Ooga booga",
+            "timePosted": "2023-04-29 22:24:03",
+            "comments": [],
+            "likes": 1,
+            "retweets": 10,
+            "views": 10
+        },
+        "10": {
+            "username": "nicodatboi",
+            "id": "10",
+            "isPost": true,
+            "content": "Yes hello",
+            "timePosted": "2023-04-29 22:24:14",
             "comments": [],
             "likes": 1,
             "retweets": 10,
