@@ -52,7 +52,7 @@
 
                     <div id="feed">
                         <div class="profileDisplay">
-                            <div id="profilebanner">
+                            <div id="profilebanner" style="background-color: {{ otherUser['bannerColor'] }};">
                                 <img src="/static/userpics/{{ otherUser['bannerImage'] }}" alt="profilebanner" id="profilebannerimg">
                             </div>
                             <div id="profilePfpShare">
@@ -167,7 +167,6 @@
 </body>
 
 <script src="/static/javascript/lib.js"></script>
-<script src="/static/javascript/redirectHvisLoggetUt.js"></script>
 <script src="/static/javascript/leftSidebar.js"></script>
 <script src="/static/javascript/rightSidebar.js"></script>
 
