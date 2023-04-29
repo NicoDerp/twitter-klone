@@ -10,10 +10,12 @@ import traceback
 import os
 import json
 import hashlib
+import datetime
+import difflib
+import heapq
 
 from socket import gethostname
 
-import datetime
 
 
 def logError(s):
@@ -280,6 +282,36 @@ def getCommentUsersForPost(post):
     return commentUsers
 
 
+# Halveis kopiert av https://stackoverflow.com/a/50872841/9983213
+def getMatchesForUserAttribute(search, attr):
+    users = getUsers()
+    users = [(users[k][attr], users[k]["username"]) for k in users]
+    n = 10
+    cutoff = 0.5
+
+    result = []
+    s = difflib.SequenceMatcher()
+    s.set_seq2(search)
+    for i, (k, u) in enumerate(users):
+        s.set_seq1(k)
+        if s.real_quick_ratio() >= cutoff and \
+           s.quick_ratio() >= cutoff and \
+           s.ratio() >= cutoff:
+            result.append((s.ratio(), (k, u)))
+
+    result = heapq.nlargest(n, result)
+    return [u for score, (k, u) in result]
+
+
+def searchForUser(s):
+    usernameMatches = getMatchesForUserAttribute(s, "username")
+    nameMatches = getMatchesForUserAttribute(s, "name")
+
+    users = getUsers()
+    matches = list(set(usernameMatches + nameMatches))
+    return [users[k] for k in matches]
+
+
 @app.get("/favicon.ico")
 def favicon():
     try:
@@ -291,7 +323,7 @@ def favicon():
 
 @app.after_request
 def after_request(response):
-    logInfo(f"response {request.url}")
+    //logInfo(f"response {request.url}")
     if "logout" in request.url:
         #response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
         response.headers['Clear-Site-Data'] = '"cache"'
@@ -477,8 +509,12 @@ def search():
         if not user:
             return redirect("/login")
 
-        whotofollow = getWhoToFollowForUser(user)
-        return render_template("sok.html", user=user, whotofollow=whotofollow)
+        users = []
+        searchfor = request.args.get("v", "")
+        if searchfor:
+            users = searchForUser(searchfor)
+
+        return render_template("sok.html", user=user, searchfor=searchfor, users=users)
     except Exception as e:
         logError(e)
         return f"Error {e}"
