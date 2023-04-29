@@ -1,5 +1,5 @@
 {
-    "count": 7,
+    "count": 9,
     "posts": {
         "0": {
             "username": "nicodatboi",
@@ -83,6 +83,30 @@
             "timePosted": "2023-04-27 17:37:14",
             "comments": [],
             "likes": 0,
+            "retweets": 10,
+            "views": 10
+        },
+        "7": {
+            "username": "nicodatboi",
+            "id": "7",
+            "isPost": true,
+            "content": "Very cool first bark",
+            "timePosted": "2023-04-29 22:07:54",
+            "comments": [
+                "8"
+            ],
+            "likes": 1,
+            "retweets": 10,
+            "views": 10
+        },
+        "8": {
+            "username": "nicodatboi",
+            "id": "8",
+            "isPost": false,
+            "content": "Wow so cool!",
+            "timePosted": "2023-04-29 22:08:09",
+            "comments": [],
+            "likes": 1,
             "retweets": 10,
             "views": 10
         }

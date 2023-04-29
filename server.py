@@ -452,6 +452,7 @@ def viewprofile():
 
         username = session["username"]
         user = getUserFromUsername(username)
+
         if not user:
             return redirect("/login")
 
@@ -469,8 +470,15 @@ def viewprofile():
 @app.get("/settings")
 def settings():
     try:
+        if "username" not in session:
+            return redirect("/login")
+
         username = session["username"]
         user = getUserFromUsername(username)
+
+        if not user:
+            return redirect("/login")
+
         whotofollow = getWhoToFollowForUser(user)
         return render_template("settings.html", user=user, whotofollow=whotofollow)
     except Exception as e:
@@ -556,7 +564,6 @@ def customizeStepPOST():
         first = request.form.get("first")
         third = request.form.get("third")
         stage = request.form.get("stage")
-        logInfo(f"Stage: {stage}\nForm: {request.form}")
         #if not first or not second or not third or not stage:
         #    logError("Error in post in customizeStepPOST")
         #    return "a"
@@ -881,6 +888,34 @@ def reply():
         saveUsers(users)
 
         return redirect(f"/viewpost/{targetPostID}")
+
+    except Exception as e:
+        logError(e)
+        return f"Error {e}"
+
+
+@app.post("/bark")
+def barkPOST():
+    try:
+        content = request.form.get("content")
+        if not content:
+            logError("Error in post in barkPOST")
+            return redirect("/home")
+
+        if "username" not in session:
+            logError("Not logged in")
+            return redirect("/login")
+
+        username = session["username"]
+
+        users = getUsers()
+        if username not in users:
+            logError("Not logged in")
+            return redirect("/login")
+
+        newPost(username, content)
+
+        return redirect("/home")
 
     except Exception as e:
         logError(e)

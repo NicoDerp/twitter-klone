@@ -37,7 +37,7 @@
             <div id="hoyrekolonne">
                 <div id="midtkolonne">
                     <button class="backButton genericButton hiddenButton">
-                        <img src="bilder/pil_svart.png" alt="arrow" width="30">
+                        <img src="/static/bilder/pil_svart.png" alt="arrow" width="30">
                     </button>
 
                     <div id="feeden">
@@ -56,26 +56,28 @@
                                         <div>@{{ user['username'] }}</div>
                                         <div>14h</div>
                                     </div>
-                                    <div class="tweetInputs">
-                                        <div class="tweettekstBark">
-                                            <textarea name="" id="tweetTextArea" cols="30" rows="10"
-                                                placeholder="Want to bark?"></textarea>
-                                            <div class="characterIndicator">230/250</div>
+                                    <form action="/bark" method="POST">
+                                        <div class="tweetInputs">
+                                            <div class="tweettekstBark">
+                                                <textarea name="content" id="tweetTextArea" cols="30" rows="10"
+                                                    placeholder="Want to bark?" required></textarea>
+                                                <div class="characterIndicator">230/250</div>
+                                            </div>
+                                            <div class="tweetImagePreview" style="display: block;">
+                                                <img src="/static/bilder/comment_hul.png" alt="">
+                                            </div>
                                         </div>
-                                        <div class="tweetImagePreview" style="display: block;">
-                                            <img src="/static/bilder/comment_hul.png" alt="">
+                                        <div class="tweetBottomRow">
+                                            <div class="tweetUploads">
+                                                <button onclick="uploadImage();" type="button" id="tweetUploadButton" class="hiddenButton">
+                                                    <img src="/static/bilder/imageupload.png" width="45" height="45" alt="icon">
+                                                </button>
+                                                <input name="image" style="display: none;" type="file" name="tweetUploadInput"
+                                                    id="tweetUploadInput" accept="image/*">
+                                            </div>
+                                            <button class="aatweetknapp">BARK</button>
                                         </div>
-                                    </div>
-                                    <div class="tweetBottomRow">
-                                        <div class="tweetUploads">
-                                            <button id="tweetUploadButton" class="hiddenButton">
-                                                <img src="/static/bilder/imageupload.png" width="45" height="45" alt="icon">
-                                            </button>
-                                            <input style="display: none;" type="file" name="tweetUploadInput"
-                                                id="tweetUploadInput" accept="image/*">
-                                        </div>
-                                        <button class="aatweetknapp">BARK</button>
-                                    </div>
+                                    </form>
                                 </div>
                                 <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
 
@@ -105,63 +107,9 @@
 <script src="/static/javascript/leftSidebar.js"></script>
 <script src="/static/javascript/rightSidebar.js"></script>
 <script>
-    let buttonLogout = document.querySelector("#popupLogoutButton");
-    buttonLogout.addEventListener("click", loggUtBruker);
-
-    let fjernQueryKnapp = document.querySelector("#fjernQueryKnapp");
-    fjernQueryKnapp.addEventListener("click", clearSearch);
-
-    function clearSearch() {
-        let sokfeltEl = document.querySelector("#sokfelt");
-        sokfeltEl.value = "";
-        sokfeltEl.focus();
-    }
-
-
-    function search() {
-        let sokfeltEl = document.querySelector("#sokfelt");
-        let query = sokfeltEl.value;
-        if (query.length > 0) {
-            window.location.href = "search.html?query=" + query;
-        }
-    }
-
-
-
-
-    let profil = document.querySelector(".profil > button");
-    let popupElement = document.querySelector("#popupLogout");
-
-    document.querySelector("#overskriftfollowing").addEventListener("focus", gjemPopup)
-    popupElement.addEventListener("blur", gjemPopup);
-
-    profil.addEventListener("focus", visPopup);
-
-    profil.addEventListener("blur", gjemPopup);
-    gjemPopup();
-    async function gjemPopup() {
-        await sleep(10);
-
-        let elementer = document.querySelectorAll("#popupLogout > *, #popupLogout");
-        let harFokus = false;
-        for (let i = 0; i < elementer.length; i++) {
-            if (elementer[i] == document.activeElement) {
-                harFokus = true;
-            }
-        }
-        if (harFokus) {
-            return
-        }
-
-        console.log("gjemPopup");
-        let popupLogout = document.querySelector("#popupLogout");
-        popupLogout.style.display = "none";
-
-    }
-    function visPopup() {
-        console.log("visPopup");
-        let popupLogout = document.querySelector("#popupLogout");
-        popupLogout.style.display = "block";
+    function uploadImage() {
+        input = document.querySelector("#tweetUploadInput");
+        input.click();
     }
 
 
