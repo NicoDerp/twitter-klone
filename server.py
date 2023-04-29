@@ -323,7 +323,7 @@ def favicon():
 
 @app.after_request
 def after_request(response):
-    //logInfo(f"response {request.url}")
+    #logInfo(f"response {request.url}")
     if "logout" in request.url:
         #response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
         response.headers['Clear-Site-Data'] = '"cache"'
