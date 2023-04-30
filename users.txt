@@ -59,7 +59,8 @@
             "1"
         ],
         "comments": [
-            "2"
+            "2",
+            "11"
         ],
         "followers": [
             "nicodatboi"
@@ -75,7 +76,7 @@
         "pinnedPost": null,
         "bio": "",
         "status": "Offline",
-        "location": "",
+        "location": "Some random place",
         "joined": "2023-04-26 17:36:54",
         "settings": {
             "theme": "dark",

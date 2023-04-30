@@ -57,7 +57,7 @@ def fjerninnside(filnavn):
         png.from_array(new_array, mode="RGBA").save("output/"+"_hul.".join(filnavn.split("/")[-1].split(".")))
 
 
-for fil in os.listdir("output"):
-    if fil.endswith(".png"):
-        fjerninnside("output/"+fil)
-# fjerninnside("bilder/home.png")
+#for fil in os.listdir("output"):
+#    if fil.endswith(".png"):
+#        fjerninnside("output/"+fil)
+fjerninnside("bilder/map_marker.png")

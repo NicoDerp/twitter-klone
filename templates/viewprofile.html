@@ -85,77 +85,142 @@
                                 </div>
                             </div>
                             <div id="overskrifttabs">
-                                <button id="overskriftfollowing" class="overskriftknapp hiddenButton">
+                                <button onclick="showPosts();" id="overskriftfollowing" class="overskriftknapp hiddenButton">
                                     <div>
                                         Tweets & Retweets
-                                        <div class="line"></div>
+                                        <div id="postsLine" class="line"></div>
                                     </div>
                                 </button>
-                                <button id="overskriftall" class="overskriftknapp hiddenButton">
+                                <button onclick="showComments();" id="overskriftall" class="overskriftknapp hiddenButton">
                                     <div>
                                         Comments
-                                        <div class="line"></div>
+                                        <div id="commentsLine" class="line" style="display: none;"></div>
                                     </div>
                                 </button>
                             </div>
                         </div>
-                        {% for postID in otherUser['posts'] %}
-                            <div class="tweet">
-                                <div class="profilbildekolonne">
-                                    <img class="profilbilde"
-                                        src="/static/userpics/{{ otherUser['profileImage'] }}"
-                                        alt="pfp" height="50" width="50">
-
-                                </div>
-                                <div class="tweetkolonne">
-                                    <div class="forfatterinfo">
-                                        <div>{{ otherUser['name'] }}</div>
-                                        <div>@{{ otherUser['username'] }}</div>
-                                        <div>{{ posts[postID]['timeSincePosted'] }}</div>
-                                    </div>
-                                    <div class="tweettekst">
-                                        {{ posts[postID]['content'] }}
-                                    </div>
-                                    <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
-
-                                    <div class="tweetknapper">
-
-                                        <a href="/viewpost/{{ postID }}" title="trykk for å legge til en kommentar"
-                                            class="tweetknappkommentar tweetknapp genericButton hiddenButton">
-                                            <span title="10000">{{ posts[postID]['comments']|length }}</span>
-                                            <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
+                        <div id="postsDiv">
+                            {% for postID in otherUser['posts'] %}
+                                <div class="tweet" onclick="location.href='/viewpost/{{ postID }}';" style="cursor: pointer;">
+                                    <div class="profilbildekolonne">
+                                        <a href="/viewprofile/{{ otherUser['username'] }}">
+                                            <img class="profilbilde"
+                                                src="/static/userpics/{{ otherUser['profileImage'] }}"
+                                                alt="pfp" height="50" width="50">
                                         </a>
 
-                                        <button title="trykk for å retweete"
-                                            class="tweetknappretweet tweetknapp genericButton hiddenButton">
-                                            <span title="10000">{{ posts[postID]['retweets'] }}</span>
-                                            <img src="/static/bilder/retweet_hul.png" height="20" alt="Retweets">
+                                    </div>
+                                    <div class="tweetkolonne">
+                                        <div class="forfatterinfo">
+                                            <div>{{ otherUser['name'] }}</div>
+                                            <div>@{{ otherUser['username'] }}</div>
+                                            <div>{{ posts[postID]['timeSincePosted'] }}</div>
+                                        </div>
+                                        <div class="tweettekst">
+                                            {{ posts[postID]['content'] }}
+                                        </div>
+                                        <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
 
-                                        </button>
+                                        <div class="tweetknapper">
 
-                                        <form action="/toggleLike" method="POST" target="invisibleIframe">
-                                            <button onclick="toggleHeart(this);" title="trykk for å like"
-                                                class="tweetknapplikes tweetknapp genericButton hiddenButton">
-                                                <span title="10000">{{ posts[postID]['likes'] }}</span>
-                                                {% if postID in user["likedPosts"] %}
-                                                    <img src="/static/bilder/heart.png" height="20" alt="Likes">
-                                                {% else %}
-                                                    <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
-                                                {% endif %}
+                                            <a href="/viewpost/{{ postID }}" title="trykk for å legge til en kommentar"
+                                                class="tweetknappkommentar tweetknapp genericButton hiddenButton">
+                                                <span title="10000">{{ posts[postID]['comments']|length }}</span>
+                                                <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
+                                            </a>
+
+                                            <button title="trykk for å retweete"
+                                                class="tweetknappretweet tweetknapp genericButton hiddenButton">
+                                                <span title="10000">{{ posts[postID]['retweets'] }}</span>
+                                                <img src="/static/bilder/retweet_hul.png" height="20" alt="Retweets">
 
                                             </button>
-                                            <input type="hidden" name="postID" value="{{ postID }}">
-                                        </form>
 
-                                        <button title="Views" class="tweetknappviews tweetknapp genericButton hidden">
-                                            <span title="10000">{{ posts[postID]['views'] }}</span>
-                                            <img src="/static/bilder/eye_hul.png" height="30" alt="Views">
+                                            <form action="/toggleLike" method="POST" target="invisibleIframe">
+                                                <button onclick="toggleHeart(this);" title="trykk for å like"
+                                                    class="tweetknapplikes tweetknapp genericButton hiddenButton">
+                                                    <span title="10000">{{ posts[postID]['likes'] }}</span>
+                                                    {% if postID in user["likedPosts"] %}
+                                                        <img src="/static/bilder/heart.png" height="20" alt="Likes">
+                                                    {% else %}
+                                                        <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
+                                                    {% endif %}
 
-                                        </button>
+                                                </button>
+                                                <input type="hidden" name="postID" value="{{ postID }}">
+                                            </form>
+
+                                            <button title="Views" class="tweetknappviews tweetknapp genericButton hidden">
+                                                <span title="10000">{{ posts[postID]['views'] }}</span>
+                                                <img src="/static/bilder/eye_hul.png" height="30" alt="Views">
+
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
+                        <div id="commentsDiv" style="display: none;">
+                            {% for commentID in comments %}
+                                <div class="tweet" onclick="location.href='/viewpost/{{ commentID }}';" style="cursor: pointer;">
+                                    <div class="profilbildekolonne">
+                                        <a href="/viewprofile/{{ otherUser['username'] }}">
+                                            <img class="profilbilde"
+                                                src="/static/userpics/{{ otherUser['profileImage'] }}"
+                                                alt="pfp" height="50" width="50">
+                                        </a>
+
+                                    </div>
+                                    <div class="tweetkolonne">
+                                        <div class="forfatterinfo">
+                                            <div>{{ otherUser['name'] }}</div>
+                                            <div>@{{ otherUser['username'] }}</div>
+                                            <div>{{ comments[commentID]['timeSincePosted'] }}</div>
+                                        </div>
+                                        <div class="tweettekst">
+                                            {{ comments[commentID]['content'] }}
+                                        </div>
+                                        <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
+
+                                        <div class="tweetknapper">
+
+                                            <a href="/viewpost/{{ postID }}" title="trykk for å legge til en kommentar"
+                                                class="tweetknappkommentar tweetknapp genericButton hiddenButton">
+                                                <span title="10000">{{ comments[commentID]['comments']|length }}</span>
+                                                <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
+                                            </a>
+
+                                            <button title="trykk for å retweete"
+                                                class="tweetknappretweet tweetknapp genericButton hiddenButton">
+                                                <span title="10000">{{ comments[commentID]['retweets'] }}</span>
+                                                <img src="/static/bilder/retweet_hul.png" height="20" alt="Retweets">
+
+                                            </button>
+
+                                            <form action="/toggleLike" method="POST" target="invisibleIframe">
+                                                <button onclick="toggleHeart(this);" title="trykk for å like"
+                                                    class="tweetknapplikes tweetknapp genericButton hiddenButton">
+                                                    <span title="10000">{{ comments[commentID]['likes'] }}</span>
+                                                    {% if commentID in user['likedPosts'] %}
+                                                        <img src="/static/bilder/heart.png" height="20" alt="Likes">
+                                                    {% else %}
+                                                        <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
+                                                    {% endif %}
+
+                                                </button>
+                                                <input type="hidden" name="postID" value="{{ postID }}">
+                                            </form>
+
+                                            <button title="Views" class="tweetknappviews tweetknapp genericButton hidden">
+                                                <span title="10000">{{ comments[commentID]['views'] }}</span>
+                                                <img src="/static/bilder/eye_hul.png" height="30" alt="Views">
+
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 {{ rightSidebar(whotofollow) }}
@@ -169,5 +234,36 @@
 <script src="/static/javascript/lib.js"></script>
 <script src="/static/javascript/leftSidebar.js"></script>
 <script src="/static/javascript/rightSidebar.js"></script>
+<script>
+
+    function showPosts() {
+        let postsDiv = document.querySelector("#postsDiv");
+        let postsLine = document.querySelector("#postsLine");
+
+        let commentsDiv = document.querySelector("#commentsDiv");
+        let commentsLine = document.querySelector("#commentsLine");
+
+        postsDiv.style.display = "block";
+        postsLine.style.display = "block";
+
+        commentsDiv.style.display = "none";
+        commentsLine.style.display = "none";
+    }
+
+    function showComments() {
+        let postsDiv = document.querySelector("#postsDiv");
+        let postsLine = document.querySelector("#postsLine");
+
+        let commentsDiv = document.querySelector("#commentsDiv");
+        let commentsLine = document.querySelector("#commentsLine");
+
+        postsDiv.style.display = "none";
+        postsLine.style.display = "none";
+
+        commentsDiv.style.display = "block";
+        commentsLine.style.display = "block";
+    }
+
+</script>
 
 </html>

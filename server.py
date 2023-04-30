@@ -158,6 +158,16 @@ def getPostsForUser(user):
     return posts
 
 
+def getCommentsForUser(user):
+    allposts = getPosts()
+    posts = {}
+
+    for postID in user["comments"]:
+        posts[postID] = allposts[postID]
+
+    return posts
+
+
 def getUsers():
     with open("users.txt", "r") as f:
         users = json.load(f)
@@ -482,10 +492,10 @@ def viewprofile(otherUsername=None):
         otherUser = getUserFromUsername(otherUsername)
         if otherUser:
             posts = getPostsForUser(otherUser)
-            #comments = getComments()
+            comments = getCommentsForUser(otherUser)
 
         whotofollow = getWhoToFollowForUser(user)
-        return render_template("viewprofile.html", user=user, whotofollow=whotofollow, otherUser=otherUser, posts=posts)
+        return render_template("viewprofile.html", user=user, whotofollow=whotofollow, otherUser=otherUser, posts=posts, comments=comments)
     except Exception as e:
         logError(e)
         return f"Error {e}"

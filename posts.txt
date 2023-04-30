@@ -1,5 +1,5 @@
 {
-    "count": 11,
+    "count": 12,
     "posts": {
         "0": {
             "username": "nicodatboi",
@@ -36,7 +36,9 @@
             "isPost": false,
             "content": "Super cool comment",
             "timePosted": "2023-04-26 17:48:02",
-            "comments": [],
+            "comments": [
+                "11"
+            ],
             "likes": 1,
             "retweets": 10,
             "views": 10
@@ -130,6 +132,17 @@
             "timePosted": "2023-04-29 22:24:14",
             "comments": [],
             "likes": 1,
+            "retweets": 10,
+            "views": 10
+        },
+        "11": {
+            "username": "ooga",
+            "id": "11",
+            "isPost": false,
+            "content": "No",
+            "timePosted": "2023-04-30 18:47:19",
+            "comments": [],
+            "likes": 0,
             "retweets": 10,
             "views": 10
         }
