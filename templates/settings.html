@@ -247,8 +247,8 @@
                                     <div id="profileBrukernavn">@{{ user['username'] }}</div>
                                     <div id="profileBio">{{ user['bio'] }}</div>
 
-                                    <div id="profileLocation">
-                                        <img id="profileLocationIcon" src="" alt="map marker icon">
+                                    <div id="profileLocation" {% if not user['location'] %} style="display: none;" {% endif %}>
+                                        <img width="25" height="25" id="profileLocationIcon" src="/static/bilder/map_marker_hul.png" alt="map marker icon">
                                         <div id="profileLocationName">{{ user['location'] }}</div>
                                     </div>
 
@@ -348,6 +348,16 @@
         input.parentElement.parentElement.submit();
         var el = document.querySelector(previewID);
         el.innerHTML = input.value;
+
+        if (previewID === "#profileLocationName") {
+            profileLocation = document.querySelector("#profileLocation");
+
+            if (input.value === "") {
+                profileLocation.style.display = "none";
+            } else {
+                profileLocation.style.display = "flex";
+            }
+        }
     }
 
     function imageSubmit(event, input, previewID) {

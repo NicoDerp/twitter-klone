@@ -742,7 +742,7 @@ def updateProfilePOST():
         # Bio
         elif field == "bio":
             bio = request.form.get("settingsEditProfileBio")
-            if not bio:
+            if bio is None:
                 logError("No bio in form")
                 return "a"
             users[username]["bio"] = bio
@@ -750,7 +750,7 @@ def updateProfilePOST():
         # Location
         elif field == "location":
             location = request.form.get("settingsEditProfileLocation")
-            if not location:
+            if location is None:
                 logError("No location in form")
                 return "a"
             users[username]["location"] = location

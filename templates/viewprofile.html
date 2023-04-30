@@ -68,10 +68,12 @@
                                 <div id="profileBrukernavn">@{{ otherUser['username'] }}</div>
                                 <div id="profileBio">{{ otherUser['bio'] }}</div>
 
-                                <div id="profileLocation">
-                                    <img height="25" width="25" id="profileLocationIcon" src="/static/bilder/map_marker_hul.png" alt="map marker icon">
-                                    <div id="profileLocationName">{{ otherUser['location'] }}</div>
-                                </div>
+                                {% if otherUser['location'] %}
+                                    <div id="profileLocation">
+                                        <img height="25" width="25" id="profileLocationIcon" src="/static/bilder/map_marker_hul.png" alt="map marker icon">
+                                        <div id="profileLocationName">{{ otherUser['location'] }}</div>
+                                    </div>
+                                {% endif %}
 
                                 <div id="profileFollowingFollowers">
                                     <div id="profileFollowing">

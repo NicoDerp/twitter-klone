@@ -76,11 +76,11 @@
         "pinnedPost": null,
         "bio": "",
         "status": "Offline",
-        "location": "Some random place",
+        "location": "",
         "joined": "2023-04-26 17:36:54",
         "settings": {
             "theme": "dark",
-            "background-color": "#ffffff",
+            "background-color": "#c4b6ff",
             "text-color": "#000000",
             "font": "Inter",
             "font-size": "1"
