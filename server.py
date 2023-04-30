@@ -253,7 +253,7 @@ def getFollowingPostsForUser(user):
     posts = []
     for un in user["following"]:
         u = users[un]
-        for postID in u["posts"] + u["comments"]:
+        for postID in u["posts"]:
             post = allposts[postID]
             post["user"] = u  # TODO only pass items that matter
             posts.append(post)
@@ -268,7 +268,7 @@ def getAllPostsForUser(user):
     posts = []
     for postID in allposts:
         post = allposts[postID]
-        if post["username"] != user["username"]:
+        if post["username"] != user["username"] and post["isPost"]:
             u = users[post["username"]]
             post["user"] = u  # TODO only pass items that matter
             posts.append(post)
@@ -813,8 +813,9 @@ def bark():
         return f"Error {e}"
 
 
+@app.get("/viewpost", strict_slashes=False)
 @app.get("/viewpost/<postID>", strict_slashes=False)
-def viewpost(postID):
+def viewpost(postID=None):
     try:
         # If user is not logged in then redirect to login page
         if "username" not in session:
@@ -826,10 +827,17 @@ def viewpost(postID):
         if not user:
             return redirect("/login")
 
-        post = getPostFromPostID(postID)
-        postOwner = getUserFromUsername(post['username'])
+        post = None
+        postOwner = None
+        commentUsers = None
+
+        if postID:
+            post = getPostFromPostID(postID)
+            if post:
+                postOwner = getUserFromUsername(post['username'])
+                commentUsers = getCommentUsersForPost(post)
+
         whotofollow = getWhoToFollowForUser(user)
-        commentUsers = getCommentUsersForPost(post)
         return render_template("viewtweet.html", user=user, whotofollow=whotofollow, post=post, postOwner=postOwner, commentUsers=commentUsers)
     except Exception as e:
         logError(e)
