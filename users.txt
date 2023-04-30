@@ -43,7 +43,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "ooga": {
@@ -78,7 +78,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "culturedGelding4": {
@@ -103,7 +103,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "yearningFalcon0": {
@@ -128,7 +128,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "jealousIguana2": {
@@ -153,7 +153,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "jumpySnail3": {
@@ -178,7 +178,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "excludedLion1": {
@@ -203,7 +203,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "decimalEland9": {
@@ -228,7 +228,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "excludedBobolink7": {
@@ -253,7 +253,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "mildBasmati7": {
@@ -278,7 +278,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "abjectDoves8": {
@@ -303,7 +303,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "fondLeopard7": {
@@ -328,7 +328,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "dejectedCoconut1": {
@@ -353,7 +353,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "ashamedLizard1": {
@@ -378,7 +378,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "sheepishTruffle7": {
@@ -403,7 +403,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "wearyCurlew2": {
@@ -428,7 +428,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "resolvedBittern1": {
@@ -453,7 +453,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "adoringLollies4": {
@@ -478,7 +478,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "superiorChamois3": {
@@ -503,7 +503,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "zestyEland8": {
@@ -528,7 +528,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "betrayedPear1": {
@@ -553,7 +553,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     },
     "kindSalami6": {
@@ -578,7 +578,7 @@
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",
-            "font-size": "1em"
+            "font-size": "1"
         }
     }
 }

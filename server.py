@@ -221,7 +221,7 @@ def newUser(username, password, name):
                     "background-color": "#ffffff",
                     "text-color": "#000000",
                     "font": "Inter",
-                    "font-size": "1em",
+                    "font-size": "1",
                 }}
 
     users[username] = new_user
@@ -645,7 +645,6 @@ def customizeStepPOST():
 def updateProfilePOST():
     try:
         field = request.form.get("field")
-        logInfo(f"Field: {field}")
         #if not first or not second or not third or not stage:
         #    logError("Error in post in customizeStepPOST")
         #    return "a"

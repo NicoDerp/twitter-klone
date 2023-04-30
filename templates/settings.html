@@ -363,7 +363,7 @@
         document.body.style.setProperty("font-size", input.value + "em");
         input.parentElement.parentElement.parentElement.submit();
         fontsizetext = document.querySelector("#fontsizepreview");
-        fontsizetext = "Curent Fontsize is " + input.value + "x default fontsize";
+        fontsizetext.innerHTML = "Curent Fontsize is " + input.value + "x default fontsize";
     }
 
 
