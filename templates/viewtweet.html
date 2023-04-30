@@ -51,9 +51,11 @@
                     <div id="feed">
                         <div class="tweet">
                             <div class="profilbildekolonne">
-                                <img class="profilbilde"
-                                    src="/static/userpics/{{ postOwner['profileImage'] }}"
-                                    alt="pfp" height="50" width="50">
+                                <a href="/viewprofile/{{ postOwner['username'] }}">
+                                    <img class="profilbilde"
+                                        src="/static/userpics/{{ postOwner['profileImage'] }}"
+                                        alt="pfp" height="50" width="50">
+                                </a>
                             </div>
                             <div class="tweetkolonne">
                                 <div class="forfatterinfo">
@@ -110,9 +112,11 @@
                                 <div class="tweetkolonne ">
                                     <div class="tweetTopRad">
                                         <div class="commentProfilbilde">
-                                            <img class="profilbilde"
-                                                src="/static/userpics/{{ user['profileImage'] }}"
-                                                alt="pfp" height="50" width="50">
+                                            <a href="/viewprofile/{{ user['username'] }}">
+                                                <img class="profilbilde"
+                                                    src="/static/userpics/{{ user['profileImage'] }}"
+                                                    alt="pfp" height="50" width="50">
+                                            </a>
                                         </div>
 
                                         <div class="forfatterinfo">
@@ -153,14 +157,17 @@
                             </div>
                             <div id="comments">
                                 {% for comment in post['comments'] %}
-                                    <div class="comment">
+                                    <div class="comment" onclick="location.href='/viewpost/{{ post['id'] }}';" style="cursor: pointer;">
                                         <div class="tweet">
                                             <div class="profilbildekolonne">
-                                                <img class="profilbilde"
-                                                    src="/static/userpics/{{ commentUsers[comment['username']]['profileImage'] }}"
-                                                    alt="pfp" height="50" width="50">
-                                                <div class="indentLinjePrime">
-                                                </div>
+                                                <a href="/viewprofile/{{ comment['username'] }}">
+                                                    <img class="profilbilde"
+                                                        src="/static/userpics/{{ commentUsers[comment['username']]['profileImage'] }}"
+                                                        alt="pfp" height="50" width="50">
+                                                </a>
+                                                {% if not comment['last'] %}
+                                                    <div class="indentLinjePrime"></div>
+                                                {% endif %}
                                             </div>
                                             <div class="tweetkolonne">
                                                 <div class="forfatterinfo">

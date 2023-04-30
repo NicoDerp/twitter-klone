@@ -250,12 +250,26 @@ def getFollowingPostsForUser(user):
     users.pop(user["username"])
 
     allposts = getPosts()
-
     posts = []
     for un in user["following"]:
         u = users[un]
-        for postID in u["posts"]:
+        for postID in u["posts"] + u["comments"]:
             post = allposts[postID]
+            post["user"] = u  # TODO only pass items that matter
+            posts.append(post)
+
+    return posts
+
+
+def getAllPostsForUser(user):
+    users = getUsers()
+
+    allposts = getPosts()
+    posts = []
+    for postID in allposts:
+        post = allposts[postID]
+        if post["username"] != user["username"]:
+            u = users[post["username"]]
             post["user"] = u  # TODO only pass items that matter
             posts.append(post)
 
@@ -267,7 +281,10 @@ def getPostFromPostID(postID):
 
     if postID in posts:
         post = posts[postID]
+        post["last"] = False
         post["comments"] = [getPostFromPostID(commentID) for commentID in posts[postID]["comments"]]
+        if len(post["comments"]) != 0:
+            post["comments"][-1]["last"] = True
         return post
 
     return None
@@ -357,9 +374,10 @@ def home():
         if not user:
             return redirect("/login")
 
-        posts = getFollowingPostsForUser(user)
+        followingPosts = getFollowingPostsForUser(user)  # TODO sort after most recent
+        allPosts = getAllPostsForUser(user)
         whotofollow = getWhoToFollowForUser(user)
-        return render_template("home.html", user=user, posts=posts, whotofollow=whotofollow)
+        return render_template("home.html", user=user, followingPosts=followingPosts, allPosts=allPosts, whotofollow=whotofollow)
     except Exception as e:
         logError(e)
         return f"Error {e}"
@@ -445,7 +463,8 @@ def registerPOST():
 
 
 @app.get("/viewprofile")
-def viewprofile():
+@app.get("/viewprofile/<otherUsername>")
+def viewprofile(otherUsername=None):
     try:
         if "username" not in session:
             return redirect("/login")
@@ -456,10 +475,15 @@ def viewprofile():
         if not user:
             return redirect("/login")
 
-        username = request.args.get("brukernavn", default=session["username"], type=str)
-        otherUser = getUserFromUsername(username)
-        posts = getPostsForUser(otherUser)
-        #comments = getComments()
+        if not otherUsername:
+            otherUsername = username
+
+        posts = []
+        otherUser = getUserFromUsername(otherUsername)
+        if otherUser:
+            posts = getPostsForUser(otherUser)
+            #comments = getComments()
+
         whotofollow = getWhoToFollowForUser(user)
         return render_template("viewprofile.html", user=user, whotofollow=whotofollow, otherUser=otherUser, posts=posts)
     except Exception as e:

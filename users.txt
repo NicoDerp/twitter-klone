@@ -19,7 +19,9 @@
             "8",
             "9"
         ],
-        "followers": [],
+        "followers": [
+            "ooga"
+        ],
         "following": [
             "ooga"
         ],
@@ -62,7 +64,9 @@
         "followers": [
             "nicodatboi"
         ],
-        "following": [],
+        "following": [
+            "nicodatboi"
+        ],
         "likedPosts": [
             "0",
             "1",
