@@ -37,28 +37,28 @@
                     <div id="overskrift">
                         <div id="overskrifttekst">Settings</div>
                         <div id="overskrifttabs">
-                            <button id="settingsProfile" class="overskriftknapp hiddenButton">
+                            <button onclick="showProfile();" id="settingsProfile" class="overskriftknapp hiddenButton">
                                 <div>
                                     Profile
-                                    <div class="line"></div>
+                                    <div id="profileLine" class="line"></div>
                                 </div>
                             </button>
-                            <button id="settingsAppearance" class="overskriftknapp hiddenButton">
+                            <button onclick="showAppearance();" id="settingsAppearance" class="overskriftknapp hiddenButton">
                                 <div>
                                     Appearance
-                                    <div class="line"></div>
+                                    <div id="appearanceLine" class="line" style="display: none;"></div>
                                 </div>
                             </button>
-                            <button id="settingsOther" class="overskriftknapp hiddenButton">
+                            <button onclick="showOther();" id="settingsOther" class="overskriftknapp hiddenButton">
                                 <div>
                                     Other
-                                    <div class="line"></div>
+                                    <div id="otherLine" class="line" style="display: none;"></div>
                                 </div>
                             </button>
                         </div>
                     </div>
                     <div id="feed">
-                        <div id="settingsEditProfile" class="settingsTabKeys" style="display: block;">
+                        <div id="settingsEditProfile" class="settingsTabKeys">
 
                             <form action="/updateProfile" method="POST" target="invisibleIframe">
                                 <div class="inputfield">
@@ -109,7 +109,7 @@
 
 
                         </div>
-                        <div id="settingsEditAppearance" class="settingsTabKeys" style="display: block;">
+                        <div id="settingsEditAppearance" class="settingsTabKeys" style="display: none;">
                             <div class="inputfield">
                                 <div class="settingssTitles">Color theme</div>
 
@@ -183,7 +183,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div id="settingsEditOther" class="settingsTabKeys" style="display: none;">
+                        <div id="settingsEditOther" class="settingsTabKeys" style=" display: none;">
                             <div class="inputfield">
                                 <label class="settingssTitles" for="settingsEditOtherSound">Bark sounds</label>
                                 <div class="horisontalFlex">
@@ -204,14 +204,14 @@
                                 <label class="settingssTitles" for="settingsEditOtherText">Bark text</label>
                                 <div class="horisontalFlex">
                                     <div class="radioElement grayBorder">
-                                        <label for="settingsEditAppearanceColorThemeLight">On</label>
-                                        <input type="radio" name="barkText" id="settingsEditAppearanceColorThemeLight"
-                                            class="settingsEditAppearanceColorThemeType" checked>
+                                        <label for="settingsEditOtherTextOn">On</label>
+                                        <input type="radio" name="barkText" id="settingsEditOtherTextOn"
+                                            class="settingsEditOtherTextType" checked>
                                     </div>
                                     <div class="radioElement grayBorder">
-                                        <label for="settingsEditAppearanceColorThemeDark">Off</label>
-                                        <input type="radio" name="barkText" id="settingsEditAppearanceColorThemeDark"
-                                            class="settingsEditAppearanceColorThemeType">
+                                        <label for="settingsEditOtherTextOff">Off</label>
+                                        <input type="radio" name="barkText" id="settingsEditOtherTextOff"
+                                            class="settingsEditOtherTextType">
                                     </div>
 
                                 </div>
@@ -374,6 +374,66 @@
         input.parentElement.parentElement.parentElement.submit();
         fontsizetext = document.querySelector("#fontsizepreview");
         fontsizetext.innerHTML = "Curent Fontsize is " + input.value + "x default fontsize";
+    }
+
+    function showProfile() {
+        let settingsEditProfile = document.querySelector("#settingsEditProfile");
+        let profileLine = document.querySelector("#profileLine");
+
+        let settingsEditAppearance = document.querySelector("#settingsEditAppearance");
+        let appearanceLine = document.querySelector("#appearanceLine");
+
+        let settingsEditOther = document.querySelector("#settingsEditOther");
+        let otherLine = document.querySelector("#otherLine");
+
+        settingsEditProfile.style.display = "block";
+        profileLine.style.display = "block";
+
+        settingsEditAppearance.style.display = "none";
+        appearanceLine.style.display = "none";
+
+        settingsEditOther.style.display = "none";
+        otherLine.style.display = "none";
+    }
+
+    function showAppearance() {
+        let settingsEditProfile = document.querySelector("#settingsEditProfile");
+        let profileLine = document.querySelector("#profileLine");
+
+        let settingsEditAppearance = document.querySelector("#settingsEditAppearance");
+        let appearanceLine = document.querySelector("#appearanceLine");
+
+        let settingsEditOther = document.querySelector("#settingsEditOther");
+        let otherLine = document.querySelector("#otherLine");
+
+        settingsEditProfile.style.display = "none";
+        profileLine.style.display = "none";
+
+        settingsEditAppearance.style.display = "block";
+        appearanceLine.style.display = "block";
+
+        settingsEditOther.style.display = "none";
+        otherLine.style.display = "none";
+    }
+
+    function showOther() {
+        let settingsEditProfile = document.querySelector("#settingsEditProfile");
+        let profileLine = document.querySelector("#profileLine");
+
+        let settingsEditAppearance = document.querySelector("#settingsEditAppearance");
+        let appearanceLine = document.querySelector("#appearanceLine");
+
+        let settingsEditOther = document.querySelector("#settingsEditOther");
+        let otherLine = document.querySelector("#otherLine");
+
+        settingsEditProfile.style.display = "none";
+        profileLine.style.display = "none";
+
+        settingsEditAppearance.style.display = "none";
+        appearanceLine.style.display = "none";
+
+        settingsEditOther.style.display = "block";
+        otherLine.style.display = "block";
     }
 
 
