@@ -60,4 +60,5 @@ def fjerninnside(filnavn):
 #for fil in os.listdir("output"):
 #    if fil.endswith(".png"):
 #        fjerninnside("output/"+fil)
-fjerninnside("bilder/map_marker.png")
+fjerninnside("static/bilder/map_marker.png")
+
