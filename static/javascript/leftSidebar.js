@@ -6,7 +6,7 @@ let popupElement = document.querySelector("#popupLogout");
 //document.querySelector("#overskriftfollowing").addEventListener("focus", gjemPopup)
 popupElement.addEventListener("blur", gjemPopup);
 
-profil.addEventListener("focus", visPopup);
+profil.addEventListener("click", visPopup);
 
 profil.addEventListener("blur", gjemPopup);
 //gjemPopup();
@@ -29,10 +29,16 @@ async function gjemPopup() {
     popupLogout.style.display = "none";
 
 }
+
 function visPopup() {
     console.log("visPopup");
     let popupLogout = document.querySelector("#popupLogout");
-    popupLogout.style.display = "block";
+
+    if (popupLogout.style.display == "none") {
+        popupLogout.style.display = "block";
+    } else {
+        popupLogout.style.display = "none";
+    }
 }
 
 
