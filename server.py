@@ -576,12 +576,16 @@ def followPOST():
         if username not in users:
             return redirect("/login")
 
-        if usernameToFollow in users[username]["following"]:
-            logError("User already following")
+        if usernameToFollow == username:
+            logError("Cannot follow yourself")
             return "a"
 
-        users[username]["following"].append(usernameToFollow)
-        users[usernameToFollow]["followers"].append(username)
+        if usernameToFollow in users[username]["following"]:
+            users[username]["following"].remove(usernameToFollow)
+            users[usernameToFollow]["followers"].remove(username)
+        else:
+            users[username]["following"].append(usernameToFollow)
+            users[usernameToFollow]["followers"].append(username)
 
         saveUsers(users)
 

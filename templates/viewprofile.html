@@ -61,7 +61,18 @@
                                         alt="pfp" id="overskriftPfp" width="150" height="150">
                                 </div>
                                 <div>
-                                    <button class="genericButton vanligKnapp">Follow</button>
+                                    {% if user['username'] != otherUser['username'] %}
+                                        <form action="/follow" method="POST" target="rightSidebarInvisibleIframe">
+                                            <input name="username" type="hidden" value="{{ otherUser['username'] }}">
+                                            <button onclick="toggleFollowText(this);" class="genericButton vanligKnapp" title="trykk for å følge">
+                                                {% if otherUser['username'] in user['following'] %}
+                                                    Unfollow
+                                                {% else %}
+                                                    Follow
+                                                {% endif %}
+                                            </button>
+                                        </form>
+                                    {% endif %}
                                     <button class="genericButton vanligKnapp">Share</button>
                                 </div>
                             </div>
@@ -84,7 +95,7 @@
                                         <div>Following</div>
                                     </div>
                                     <div id="profileFollowers">
-                                        <div>{{ otherUser['followers']|length }}</div>
+                                        <div id="profileFollowersCount">{{ otherUser['followers']|length }}</div>
                                         <div>Followers</div>
                                     </div>
                                 </div>
@@ -267,6 +278,18 @@
 
         commentsDiv.style.display = "block";
         commentsLine.style.display = "block";
+    }
+
+    function toggleFollowText(button) {
+        profileFollowersCount = document.querySelector("#profileFollowersCount");
+
+        if (button.innerText == "Follow") {
+            button.innerText = "Unfollow";
+            profileFollowersCount.innerHTML = parseInt(profileFollowersCount.innerHTML) + 1;
+        } else {
+            button.innerText = "Follow";
+            profileFollowersCount.innerHTML = parseInt(profileFollowersCount.innerHTML) - 1;
+        }
     }
 
 </script>
