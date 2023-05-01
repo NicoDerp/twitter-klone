@@ -56,15 +56,15 @@
                                         <div>@{{ user['username'] }}</div>
                                         <div>14h</div>
                                     </div>
-                                    <form action="/bark" method="POST">
+                                    <form action="/bark" method="POST" enctype="multipart/form-data">
                                         <div class="tweetInputs">
                                             <div class="tweettekstBark">
                                                 <textarea name="content" id="tweetTextArea" cols="30" rows="10"
                                                     placeholder="Want to bark?" required></textarea>
                                                 <div class="characterIndicator">230/250</div>
                                             </div>
-                                            <div class="tweetImagePreview" style="display: block;">
-                                                <img src="/static/bilder/comment_hul.png" alt="">
+                                            <div class="tweetImagePreview">
+                                                <img id="tweetImagePreview" src="" alt="" style="display: none;">
                                             </div>
                                         </div>
                                         <div class="tweetBottomRow">
@@ -72,8 +72,8 @@
                                                 <button onclick="uploadImage();" type="button" id="tweetUploadButton" class="hiddenButton">
                                                     <img src="/static/bilder/imageupload.png" width="45" height="45" alt="icon">
                                                 </button>
-                                                <input name="image" style="display: none;" type="file" name="tweetUploadInput"
-                                                    id="tweetUploadInput" accept="image/*">
+                                                <input name="image" style="display: none;" type="file"
+                                                    id="tweetUploadInput" accept="image/*" onchange="setPreviewImage(event)">
                                             </div>
                                             <button class="aatweetknapp">BARK</button>
                                         </div>
@@ -110,6 +110,15 @@
     function uploadImage() {
         input = document.querySelector("#tweetUploadInput");
         input.click();
+    }
+
+    function setPreviewImage() {
+        tweetImagePreview = document.querySelector("#tweetImagePreview");
+        tweetImagePreview.src = URL.createObjectURL(event.target.files[0]);
+        tweetImagePreview.style.display = "block";
+        tweetImagePreview.onload = function() {
+            URL.revokeObjectURL(tweetImagePreview.src) // free memory
+        };
     }
 
 
