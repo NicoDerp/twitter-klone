@@ -44,6 +44,7 @@
 
 
                             <div class="tweetheader" value="0">Make a Bark</div>
+                            <p id="errorMessage" class="errorMessageFade"></p>
                             <div class="barker">
                                 <div class="profilbildekolonne">
                                     <img class="profilbilde"
@@ -56,15 +57,15 @@
                                         <div>@{{ user['username'] }}</div>
                                         <div>14h</div>
                                     </div>
-                                    <form action="/bark" method="POST" enctype="multipart/form-data">
+                                    <form onsubmit="return submitBark();" action="/bark" method="POST" enctype="multipart/form-data">
                                         <div class="tweetInputs">
                                             <div class="tweettekstBark">
                                                 <textarea name="content" id="tweetTextArea" cols="30" rows="10"
-                                                    placeholder="Want to bark?" required></textarea>
-                                                <div class="characterIndicator">230/250</div>
+                                                    placeholder="Want to bark?" oninput="updateWordCount(this);" required></textarea>
+                                                <div id="characterIndicator" class="characterIndicator">0/250</div>
                                             </div>
-                                            <div class="tweetImagePreview">
-                                                <img id="tweetImagePreview" src="" alt="" style="display: none;">
+                                            <div class="tweetImagePreview" style="display: none;">
+                                                <img id="tweetImagePreview" src="" alt="">
                                             </div>
                                         </div>
                                         <div class="tweetBottomRow">
@@ -108,17 +109,45 @@
 <script src="/static/javascript/rightSidebar.js"></script>
 <script>
     function uploadImage() {
-        input = document.querySelector("#tweetUploadInput");
+        let input = document.querySelector("#tweetUploadInput");
         input.click();
     }
 
     function setPreviewImage() {
-        tweetImagePreview = document.querySelector("#tweetImagePreview");
+        let tweetImagePreview = document.querySelector("#tweetImagePreview");
         tweetImagePreview.src = URL.createObjectURL(event.target.files[0]);
-        tweetImagePreview.style.display = "block";
+        tweetImagePreview.parentElement.style.display = "block";
         tweetImagePreview.onload = function() {
             URL.revokeObjectURL(tweetImagePreview.src) // free memory
         };
+    }
+
+    function updateWordCount(textarea) {
+        let characterCount = document.querySelector("#characterIndicator");
+        let count = textarea.value.split(' ').length;
+        characterCount.innerText = count + "/250";
+        if (count > 10) {
+            characterCount.classList.add("invalidCharacterIndicator");
+        } else {
+            characterCount.classList.remove("invalidCharacterIndicator");
+        }
+    }
+
+    function submitBark() {
+        let textarea = document.querySelector("#tweetTextArea");
+        let count = textarea.value.split(' ').length;
+
+        if (count > 250) {
+            let errorMessage = document.querySelector("#errorMessage");
+            errorMessage.innerHTML = "Bark exceeds word limit of 250 words!";
+            errorMessage.style.display = "block";
+            setTimeout(function() {
+                errorMessage.style.display = "none";
+            }, 6000);
+            return false;
+        }
+
+        return true;
     }
 
 

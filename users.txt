@@ -56,7 +56,10 @@
         "bannerImage": "default_banner.png",
         "bannerColor": "#808080",
         "posts": [
-            "1"
+            "1",
+            "12",
+            "13",
+            "14"
         ],
         "comments": [
             "2",

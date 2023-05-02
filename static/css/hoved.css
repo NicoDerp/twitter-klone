@@ -1335,3 +1335,27 @@ input[type='range']::-webkit-slider-thumb {
     margin-bottom: 10px;
 
 }
+
+@keyframes fadeOut {
+   0% { opacity: 1; }
+   80% { opacity: 1; }
+   100% { opacity: 0; }
+}
+
+.errorMessageFade {
+    display: none;
+    color: #f54e42;
+    font-size: 1.25em;
+    margin-bottom: 15px;
+    max-width: 70%;
+    /*width: 100%;*/
+    border-radius: 10px;
+    border: solid #ffbbbb 2px;
+    background-color: #ffdddd;
+    padding: 15px;
+    animation: fadeOut 6.0s forwards;
+}
+
+.invalidCharacterIndicator {
+    color: #f54e42;
+}
