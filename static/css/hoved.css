@@ -497,6 +497,13 @@ body.customTheme {
     margin-bottom: 10px;
 }
 
+/*.forfatterinfo>div:nth-child(4) {*/
+.forfatterinfo>.retweetedHeader {
+    margin-left: 10px;
+    font-weight: 700;
+    opacity: 1;
+}
+
 .forfatterinfo>div {
     margin-right: 15px;
     opacity: 0.8;
