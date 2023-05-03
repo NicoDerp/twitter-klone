@@ -54,7 +54,7 @@
                     <div id="feed">
                         <div id="followingFeed">
                             {% for post in followingPosts %}
-                                <div class="tweet" onclick="location.href='/viewpost/{{ post['id'] }}';" style="cursor: pointer;">
+                                <div class="tweet" onclick="redirectToPost(event, '/viewpost/{{ post['id'] }}');" style="cursor: pointer;">
                                     <div class="profilbildekolonne">
                                         <a href="/viewprofile/{{ post['user']['username'] }}">
                                             <img class="profilbilde"
@@ -114,7 +114,7 @@
 
                         <div id="allFeed" style="display: none;">
                             {% for post in allPosts %}
-                                <div class="tweet" onclick="location.href='/viewpost/{{ post['id'] }}';" style="cursor: pointer;">
+                                <div class="tweet" onclick="redirectToPost(event, '/viewpost/{{ post['id'] }}');" style="cursor: pointer;">
                                     <div class="profilbildekolonne">
                                         <a href="/viewprofile/{{ post['user']['username'] }}">
                                             <img class="profilbilde"
@@ -191,37 +191,8 @@
 <script src="/static/javascript/lib.js"></script>
 <script src="/static/javascript/leftSidebar.js"></script>
 <script src="/static/javascript/rightSidebar.js"></script>
-
-<script>
-
-    function showFollowingPosts() {
-        followingFeed = document.querySelector("#followingFeed");
-        followingLine = document.querySelector("#followingLine");
-
-        allFeed = document.querySelector("#allFeed");
-        allLine = document.querySelector("#allLine");
-
-        followingFeed.style.display = "block";
-        followingLine.style.display = "block";
-
-        allFeed.style.display = "none";
-        allLine.style.display = "none";
-    }
-
-    function showAllPosts() {
-        followingFeed = document.querySelector("#followingFeed");
-        followingLine = document.querySelector("#followingLine");
-
-        allFeed = document.querySelector("#allFeed");
-        allLine = document.querySelector("#allLine");
-
-        followingFeed.style.display = "none";
-        followingLine.style.display = "none";
-
-        allFeed.style.display = "block";
-        allLine.style.display = "block";
-    }
-
-</script>
+<script src="/static/javascript/urlbarHistory.js"></script>
+<script src="/static/javascript/postRedirect.js"></script>
+<script src="/static/javascript/home.js"></script>
 
 </html>

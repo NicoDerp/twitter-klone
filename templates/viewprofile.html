@@ -117,7 +117,7 @@
                         </div>
                         <div id="postsDiv">
                             {% for postID in otherUser['posts'] %}
-                                <div class="tweet" onclick="location.href='/viewpost/{{ postID }}';" style="cursor: pointer;">
+                                <div class="tweet" onclick="redirectToPost(event, '/viewpost/{{ postID }}');" style="cursor: pointer;">
                                     <div class="profilbildekolonne">
                                         <a href="/viewprofile/{{ otherUser['username'] }}">
                                             <img class="profilbilde"
@@ -178,7 +178,7 @@
                         </div>
                         <div id="commentsDiv" style="display: none;">
                             {% for commentID in comments %}
-                                <div class="tweet" onclick="location.href='/viewpost/{{ commentID }}';" style="cursor: pointer;">
+                                <div class="tweet" onclick="redirectToPost(event, '/viewpost/{{ commentID }}');" style="cursor: pointer;">
                                     <div class="profilbildekolonne">
                                         <a href="/viewprofile/{{ otherUser['username'] }}">
                                             <img class="profilbilde"
@@ -250,48 +250,8 @@
 <script src="/static/javascript/lib.js"></script>
 <script src="/static/javascript/leftSidebar.js"></script>
 <script src="/static/javascript/rightSidebar.js"></script>
-<script>
-
-    function showPosts() {
-        let postsDiv = document.querySelector("#postsDiv");
-        let postsLine = document.querySelector("#postsLine");
-
-        let commentsDiv = document.querySelector("#commentsDiv");
-        let commentsLine = document.querySelector("#commentsLine");
-
-        postsDiv.style.display = "block";
-        postsLine.style.display = "block";
-
-        commentsDiv.style.display = "none";
-        commentsLine.style.display = "none";
-    }
-
-    function showComments() {
-        let postsDiv = document.querySelector("#postsDiv");
-        let postsLine = document.querySelector("#postsLine");
-
-        let commentsDiv = document.querySelector("#commentsDiv");
-        let commentsLine = document.querySelector("#commentsLine");
-
-        postsDiv.style.display = "none";
-        postsLine.style.display = "none";
-
-        commentsDiv.style.display = "block";
-        commentsLine.style.display = "block";
-    }
-
-    function toggleFollowText(button) {
-        profileFollowersCount = document.querySelector("#profileFollowersCount");
-
-        if (button.innerText == "Follow") {
-            button.innerText = "Unfollow";
-            profileFollowersCount.innerHTML = parseInt(profileFollowersCount.innerHTML) + 1;
-        } else {
-            button.innerText = "Follow";
-            profileFollowersCount.innerHTML = parseInt(profileFollowersCount.innerHTML) - 1;
-        }
-    }
-
-</script>
+<script src="/static/javascript/urlbarHistory.js"></script>
+<script src="/static/javascript/postRedirect.js"></script>
+<script src="/static/javascript/viewprofile.js"></script>
 
 </html>

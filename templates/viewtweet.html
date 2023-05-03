@@ -158,7 +158,7 @@
                                 </div>
                                 <div id="comments">
                                     {% for comment in post['comments'] %}
-                                        <div class="comment" onclick="location.href='/viewpost/{{ post['id'] }}';" style="cursor: pointer;">
+                                        <div class="comment" onclick="redirectToPost(event, '/viewpost/{{ comment['id'] }}');" style="cursor: pointer;">
                                             <div class="tweet">
                                                 <div class="profilbildekolonne">
                                                     <a href="/viewprofile/{{ comment['username'] }}">
@@ -257,8 +257,6 @@
 <script src="/static/javascript/leftSidebar.js"></script>
 <script src="/static/javascript/rightSidebar.js"></script>
 <script src="/static/javascript/urlbarHistory.js"></script>
-<script>
-    leggTilHistory();
-</script>
+<script src="/static/javascript/postRedirect.js"></script>
 
 </html>

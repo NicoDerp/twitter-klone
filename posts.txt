@@ -39,7 +39,7 @@
             "comments": [
                 "11"
             ],
-            "likes": 1,
+            "likes": 0,
             "retweets": 10,
             "views": 10
         },
@@ -98,7 +98,7 @@
             "comments": [
                 "8"
             ],
-            "likes": 1,
+            "likes": 2,
             "retweets": 10,
             "views": 10
         },

@@ -36,3 +36,4 @@ for (let i = 0; i < backButtons.length; i++) {
     backButtons[i].addEventListener("click", goBack);
 }
 
+leggTilHistory();
