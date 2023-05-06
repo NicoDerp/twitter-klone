@@ -15,7 +15,7 @@ import difflib
 import heapq
 
 from socket import gethostname
-
+import re
 
 
 def logError(s):
@@ -455,6 +455,12 @@ def registerPOST():
         #}
 
         # comments follow same structure as posts
+
+        logInfo(re.match(r"/[^a-zA-Z\d]/g", username))
+        if re.match(r"/[^a-zA-Z\d]/g", username):
+            return render_template("registrere.html", error="Brukernavnet kan bare inneholde symbolene: A-Z, a-z og 0-9")
+
+        return "no"
 
         success = newUser(username, password, "")
         if not success:

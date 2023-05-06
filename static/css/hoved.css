@@ -448,6 +448,11 @@ body.customTheme {
     margin: none;
 }
 
+.retweetWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .aatweetknapp {
     background-color: #baaaff;
     color: white;
@@ -481,10 +486,43 @@ body.customTheme {
     padding-bottom: 0px;
 }
 
+.retweetIndikator {
+    font-size: 1em;
+    font-weight: 500;
+    opacity: 0.5;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.retweetIndikator>*{
+    margin-right: 0.5em;
+}
+
+.retweetIndikator>*:nth-child(1){
+    margin-right: 5px;
+}
+
+
+.retweetIndikator a {
+    text-decoration: none;
+}
+
+.retweetIndikator a:hover {
+    text-decoration: underline;
+}
+
 .profilbildekolonne {
     padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 10px;
+}
+
+.tweet:hover {
+    background-color: #aaaaaa10;
+    transition-duration: 200ms;
 }
 
 .forfatterinfo {
@@ -514,16 +552,26 @@ body.customTheme {
     opacity: 1;
 }
 
+.forfatterinfo>a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.forfatterinfo>a:hover {
+    text-decoration: underline;
+}
+
 .tweettekst {
     font-size: 1.25em;
     max-width: 450px;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 .tweetbilde {
     width: 100%;
     max-width: 550px;
-    min-width: 385px;
+    /*min-width: 385px;*/
     margin-bottom: 10px;
     border-radius: 20px;
 }
@@ -562,12 +610,12 @@ textarea {
     left: calc(5% + 30px);
     /* width: 300px; */
     background-color: #aaaaaa20;
-    ;
-    z-index: -99999999;
+    z-index: 100;
     padding: 15px;
     border-radius: 20px;
     min-width: 170px;
     /* width: 100px; */
+    backdrop-filter: blur(3px);
 }
 
 #popupLogout>* {
@@ -602,6 +650,7 @@ textarea {
         padding-left: 15px;
         padding-right: 15px;
         flex: 0;
+        z-index: 99;
     }
 
     .profilknapp {
@@ -621,7 +670,7 @@ textarea {
         margin-right: 0px;
     }
 
-    .genericButton:not(#profilePfpShare *, #setupProfile *, #midtkolonne *,#popupLogout *) {
+    .genericButton:not(#profilePfpShare *, #setupProfile *, #midtkolonne *, #popupLogout *) {
         padding: 10px;
         margin: 0 auto;
     }
@@ -666,9 +715,11 @@ textarea {
 }
 
 @media only screen and (max-width: 450px) {
-    #menyprofil, #menyinnstillinger {
+    #menyprofil,
+    #menyinnstillinger {
         display: none;
     }
+
     .bunnhoyre,
     .fixedbunnhoyre {
         display: none;
@@ -681,6 +732,7 @@ textarea {
     .hovedflex {
         flex-direction: column-reverse;
         height: 100%;
+        z-index: 1;
     }
 
     #venstrekolonne {
@@ -735,22 +787,49 @@ textarea {
         padding-right: 20px;
     }
 
+    .tweetknapper {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+    }
+
+    .tweetknapp {
+        padding: 7px;
+    }
+
+    .tweetkolonne {
+        width: calc(100% - 80px);
+    }
+
+    .profilbildekolonne {
+        padding-left: 10px;
+    }
+
     #feed {
-        bottom: auto;
-        top: 0px;
+        position: fixed;
+        width: 100%;
         /* padding-bottom: 100px; */
 
         /* padding-top: 100000px; */
 
-        height: 10px;
-        width: 100%;
+        position: relative;
+        max-width: 100vh;
+        height: 100vh;
+        /* overflow-y: scroll; */
     }
 
     #feed>*:last-child {
         margin-bottom: 100px;
     }
 
+    #feed>*:first-child {
+        padding-top: 90px;
+    }
 
+    #overskrift {
+        position: fixed;
+        width: 100%;
+    }
 
 
 }
@@ -758,6 +837,7 @@ textarea {
 .profileDisplay {
     position: relative;
     display: block;
+    border-bottom: rgba(222, 230, 232, 0.6) solid 1px;
 }
 
 
@@ -786,6 +866,8 @@ textarea {
 
 #profilePfpShare>div {
     position: relative;
+    width: 150px;
+    margin-right: 10px;
 }
 
 #profilePfpShare>div>img {
@@ -832,8 +914,14 @@ textarea {
     padding: 0px;
     padding-left: 15px;
     padding-right: 15px;
-    height: 40px;
     font-size: 1em;
+}
+
+.profileDisplay button:not(.overskriftknapp),
+#overskrift button:not(.overskriftknapp) {
+    height: 40px;
+
+
 }
 
 #profileFollowingFollowers {
@@ -1245,8 +1333,23 @@ input[type='range']::-webkit-slider-thumb {
     height: fit-content;
 }
 
+.viewReplies{
+    display: block;
+    width: 50px;
+    height: 20px;
+    color: #baaaff;
+    margin-top: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+.viewReplies:hover{
+    cursor: pointer;
+    color: #9279ff;
+    text-decoration: underline;
+}
+
 .indentLinjePrime {
-    height: calc(100% - 50px);
+    height: calc(100% - 50px - 60px);
     width: 3px;
     margin-left: auto;
     margin-right: auto;
@@ -1341,6 +1444,22 @@ input[type='range']::-webkit-slider-thumb {
     margin-right: auto;
     margin-bottom: 10px;
 
+}
+
+#settingsSidebarButtonFlex {
+    margin: 0 auto;
+
+}
+
+#settingsSidebarButtonFlex>button {
+    margin: 10px;
+}
+
+#commentsHeader{
+    margin: 0px;
+    padding: 15px;
+    padding-left: 20px;
+    border-bottom: rgba(222, 230, 232, 0.6) solid 1px;
 }
 
 @keyframes fadeOut {
