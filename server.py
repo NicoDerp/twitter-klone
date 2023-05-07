@@ -456,8 +456,8 @@ def registerPOST():
 
         # comments follow same structure as posts
 
-        if re.search(r"[^a-zA-Z\d]", username):
-            return render_template("registrere.html", error="Brukernavnet kan bare inneholde symbolene: A-Z, a-z og 0-9")
+        #if re.search(r"[^a-zA-Z\d]", username):
+        #    return render_template("registrere.html", error="Brukernavnet kan bare inneholde symbolene: A-Z, a-z og 0-9")
 
         success = newUser(username, password, "")
         if not success:
