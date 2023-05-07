@@ -108,6 +108,7 @@
 <script src="/static/javascript/leftSidebar.js"></script>
 <script src="/static/javascript/rightSidebar.js"></script>
 <script src="/static/javascript/urlbarHistory.js"></script>
+<script src="/static/javascript/wordCount.js"></script>
 <script>
     function uploadImage() {
         let input = document.querySelector("#tweetUploadInput");
@@ -121,34 +122,6 @@
         tweetImagePreview.onload = function() {
             URL.revokeObjectURL(tweetImagePreview.src) // free memory
         };
-    }
-
-    function updateWordCount(textarea) {
-        let characterCount = document.querySelector("#characterIndicator");
-        let count = textarea.value.split(' ').length;
-        characterCount.innerText = count + "/250";
-        if (count > 10) {
-            characterCount.classList.add("invalidCharacterIndicator");
-        } else {
-            characterCount.classList.remove("invalidCharacterIndicator");
-        }
-    }
-
-    function submitBark() {
-        let textarea = document.querySelector("#tweetTextArea");
-        let count = textarea.value.split(' ').length;
-
-        if (count > 250) {
-            let errorMessage = document.querySelector("#errorMessage");
-            errorMessage.innerHTML = "Bark exceeds word limit of 250 words!";
-            errorMessage.style.display = "block";
-            setTimeout(function() {
-                errorMessage.style.display = "none";
-            }, 6000);
-            return false;
-        }
-
-        return true;
     }
 
 

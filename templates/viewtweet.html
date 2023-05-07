@@ -126,7 +126,7 @@
                                             </div>
                                         </div>
 
-                                        <form action="/reply" method="POST">
+                                        <form onsubmit="return submitBark();" action="/reply" method="POST" enctype="multipart/form-data">
                                             <div class="tweetInputs">
                                                 <div class="tweettekstBark">
                                                     <textarea name="content" id="tweetTextArea" cols="30" rows="10"
@@ -134,8 +134,8 @@
                                                             placeholder="No comments yet. Be the first to comment!"
                                                         {% else %}
                                                             placeholder="Add a comment..."
-                                                        {% endif %}></textarea>
-                                                    <div class="characterIndicator">230/250</div>
+                                                        {% endif %} oninput="updateWordCount(this);" required></textarea>
+                                                    <div id="characterIndicator" class="characterIndicator">0/250</div>
                                                 </div>
                                                 <div class="tweetImagePreview" style="display: none;">
                                                     <img src="/static/bilder/comment_hul.png" alt="">
@@ -168,8 +168,8 @@
                                     {% else %}
                                         {% for comment in post['comments'] %}
                                             <div class="comment" onclick="redirectToPost(event, '/viewpost/{{ comment['id'] }}');" style="cursor: pointer;">
-                                                <div class="tweet">
-                                                    <div class="retweetWrapper">
+                                                <div class="tweet" style="width: 100%;">
+                                                    <div class="retweetWrapper" style="width: 100%;">
                                                         <div class="profilbildekolonne">
                                                             <a href="/viewprofile/{{ comment['username'] }}">
                                                                 <img class="profilbilde"
@@ -271,5 +271,6 @@
 <script src="/static/javascript/rightSidebar.js"></script>
 <script src="/static/javascript/urlbarHistory.js"></script>
 <script src="/static/javascript/postRedirect.js"></script>
+<script src="/static/javascript/wordCount.js"></script>
 
 </html>
