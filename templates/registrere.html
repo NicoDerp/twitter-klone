@@ -51,7 +51,7 @@
         {% else %}
             <p class="errorMessage"></p>
         {% endif %}
-        <form action="/register" method="POST">
+        <form onsubmit="return register();" id="registerForm" action="/register" method="POST">
             <div class="inputfield">
                 <label for="brukernavn">Brukernavn</label>
                 <input type="text" id="brukernavn" name="brukernavn" placeholder="" required>
@@ -71,10 +71,6 @@
 </body>
 <script src="/static/javascript/lib.js"></script>
 <script>
-    // legger til event listeners
-    let registrerKnapp = document.querySelector('button');
-    registrerKnapp.addEventListener('click', registrer);
-
     let inputBrukernavn = document.querySelector('#brukernavn');
     let inputPassord = document.querySelector('#passord');
     let inputPassordRepeat = document.querySelector('#passord-repeat');
@@ -93,22 +89,18 @@
 
     inputPassordRepeat.addEventListener('keyup', function (e) {
         if (e.key === 'Enter') {
-            registrer();
+            if (register()) {
+                let form = document.querySelector("#registerForm");
+                form.submit();
+            }
         }
     });
 
-    registrerKnapp.addEventListener('keyup', function (e) {
-        if (e.key === 'Enter') {
-            registrer();
-        }
-    });
 
 
 
 
-
-    function registrer(e) {
-        return;
+    function register() {
         let brukernavnEl = document.querySelector('#brukernavn');
         let passordEl = document.querySelector('#passord');
         let passordRepeatEl = document.querySelector('#passord-repeat');
@@ -117,46 +109,31 @@
         let passord = passordEl.value;
         let passordRepeat = passordRepeatEl.value;
 
-        if (brukernavn.length === 0) {
-            console.log('Du må skrive inn brukernavn');
-            let errorMessage = document.querySelector('.errorMessage');
-            errorMessage.innerHTML = 'Du må skrive inn brukernavn';
-            brukernavnEl.focus();
-            errorMessage.style.display = 'block';
-            return
-        }
-        if (passord.length === 0) {
-            console.log('Du må skrive inn passord');
-            let errorMessage = document.querySelector('.errorMessage');
-            errorMessage.innerHTML = 'Du må skrive inn passord';
-            passordEl.focus();
-            errorMessage.style.display = 'block';
-            return
-        }
         if (passordRepeat !== passord) {
-            console.log('Passordene er ikke like');
             let errorMessage = document.querySelector('.errorMessage');
             errorMessage.innerHTML = 'Passordene er ikke like';
-            passordRepeatEl.focus();
+            //passordRepeatEl.focus();
             errorMessage.style.display = 'block';
-            return
+            return false;
         }
+
         if (brukernavn.length < 3 || brukernavn.length > 20) {
-            console.log('Brukernavnet må være mellom 3 og 20 tegn');
             let errorMessage = document.querySelector('.errorMessage');
             errorMessage.innerHTML = 'Brukernavnet må være mellom 3 og 20 tegn';
-            brukernavnEl.focus();
+            //brukernavnEl.focus();
             errorMessage.style.display = 'block';
-            return
+            return false;
         }
+
         if (passord.length < 6) {
-            console.log('Passordet må være minst 6 tegn');
             let errorMessage = document.querySelector('.errorMessage');
             errorMessage.innerHTML = 'Passordet må være minst 6 tegn';
-            passordEl.focus();
+            //passordEl.focus();
             errorMessage.style.display = 'block';
-            return
+            return false;
         }
+
+        return true;
     }
 
 </script>
