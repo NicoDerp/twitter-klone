@@ -60,9 +60,10 @@
                                     <img src="/static/userpics/{{ otherUser['profileImage'] }}"
                                         alt="pfp" id="overskriftPfp" width="150" height="150">
                                 </div>
-                                <div>
+                                <div style="width: auto;">
+                                    <button style="float: right;" class="genericButton vanligKnapp">Share</button>
                                     {% if user['username'] != otherUser['username'] %}
-                                        <form action="/follow" method="POST" target="rightSidebarInvisibleIframe">
+                                        <form style="margin-top: 5px;" action="/follow" method="POST" target="rightSidebarInvisibleIframe">
                                             <input name="username" type="hidden" value="{{ otherUser['username'] }}">
                                             <button onclick="toggleFollowText(this);" class="genericButton vanligKnapp" title="trykk for å følge">
                                                 {% if otherUser['username'] in user['following'] %}
@@ -73,7 +74,6 @@
                                             </button>
                                         </form>
                                     {% endif %}
-                                    <button class="genericButton vanligKnapp">Share</button>
                                 </div>
                             </div>
                             <div id="profileTextBody">
