@@ -110,61 +110,40 @@
                                     </div>
                                 </div>
                             {% endfor %}
-                            <div class="tweet" onclick="redirectToPost(event, '/viewpost/');" style="cursor: pointer;">
+                            <div class="retweetWrapper">
                                 <div class="profilbildekolonne">
-                                    <a href="/viewprofile/">
-                                        <img class="profilbilde"
-                                            src="/static/userpics/nicodatboi_profileImage.png"
-                                            alt="pfp" height="50" width="50">
-                                    </a>
+                                    <img class="profilbilde"
+                                        src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png"
+                                        alt="pfp" height="50" width="50">
                                 </div>
                                 <div class="tweetkolonne">
-                                    <div class="forfatterinfo" style="max-width: 100%;">
-                                        <div>Nicolai Buch</div>
-                                        <div>@nicodatboi</div>
-                                        <div>12h</div>
-
-                                        <div class="retweetedHeader">Retweeted Ooga Booga</div>
-                                        <div>@oogabooga</div>
+                                    <div class="forfatterinfo">
+                                        <div>Name Lastname</div>
+                                        <div>@elonmusk</div>
+                                        <div>14h</div>
                                     </div>
                                     <div class="tweettekst">
-                                        hei hei
+                                        I am a tweet
                                     </div>
-
-                                    <!-- <img src="https://cdn.discordapp.com/attachments/1095708777027739668/1096797766228918313/IT_logo.png" alt="tweet image" class="tweetbilde"> -->
-
                                     <div class="tweetknapper">
-
-                                        <a href="/viewpost/" title="trykk for å legge til en kommentar"
+                                        <button title="trykk for å legge til en kommentar"
                                             class="tweetknappkommentar tweetknapp genericButton hiddenButton">
-                                            <span title="10000">0</span>
+                                            <span title="10000">10.0k</span>
                                             <img src="/static/bilder/comment_hul.png" height="20" alt="Kommentarer">
-                                        </a>
-
+                                        </button>
                                         <button title="trykk for å retweete"
                                             class="tweetknappretweet tweetknapp genericButton hiddenButton">
-                                            <span title="10000">0</span>
+                                            <span title="10000">10.0k</span>
                                             <img src="/static/bilder/retweet_hul.png" height="20" alt="Retweets">
-
                                         </button>
-
-                                        <form action="/toggleLike" method="POST" target="invisibleIframe">
-                                            <button onclick="toggleHeart(this);" title="trykk for å like"
-                                                class="tweetknapplikes tweetknapp genericButton hiddenButton">
-                                                <span title="10000">0</span>
-                                                {% if True %}
-                                                    <img src="/static/bilder/heart.png" height="20" alt="Likes">
-                                                {% else %}
-                                                    <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
-                                                {% endif %}
-                                            </button>
-                                            <input type="hidden" name="postID" value="">
-                                        </form>
-
+                                        <button title="trykk for å like"
+                                            class="tweetknapplikes tweetknapp genericButton hiddenButton">
+                                            <span title="10000">10.0k</span>
+                                            <img src="/static/bilder/heart_hul.png" height="20" alt="Likes">
+                                        </button>
                                         <button title="Views" class="tweetknappviews tweetknapp genericButton hidden">
-                                            <span title="10000">0</span>
+                                            <span title="10000">10.0k</span>
                                             <img src="/static/bilder/eye_hul.png" height="30" alt="Views">
-
                                         </button>
                                     </div>
                                 </div>

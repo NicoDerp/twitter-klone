@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="/static/css/hoved.css">
 </head>
 <style>
-
+    #sidebar {
+        justify-content: space-between;
+        height: 95vh;
+    }
 
 </style>
 
@@ -35,7 +38,12 @@
             <div id="hoyrekolonne">
                 <div id="midtkolonne">
                     <div id="overskrift">
-                        <div id="overskrifttekst">Settings</div>
+                        <div id="viewprofileTopp">
+                            <button class="backButton genericButton hiddenButton">
+                                <img src="/static/bilder/pil_svart.png" alt="arrow" width="30">
+                            </button>
+                            <h3>Settings</h3>
+                        </div>
                         <div id="overskrifttabs">
                             <button onclick="showProfile();" id="settingsProfile" class="overskriftknapp hiddenButton">
                                 <div>
@@ -75,7 +83,8 @@
                                 <div class="inputfield">
                                     <label class="settingssTitles" for="settingsEditProfileBanner">Profile banner</label>
                                     <input type="file" id="settingsEditProfileBanner" name="settingsEditProfileBanner"
-                                        class="inputFile" onchange="imageSubmit(event, this, '#profilebannerimg');">
+                                        class="inputFile" onchange="imageSubmit(event, this, '#profilebannerimg');"
+                                        accept="image/*">
                                     <input type="hidden" name="field" value="profileBanner">
                                 </div>
                             </form>
@@ -84,15 +93,16 @@
                                 <div class="inputfield">
                                     <label class="settingssTitles" for="settingsEditProfilePicture">Profile picture</label>
                                     <input type="file" id="settingsEditProfilePicture" name="settingsEditProfilePicture"
-                                        class="inputFile" onchange="imageSubmit(event, this, '#overskriftPfp');">
+                                        class="inputFile" onchange="imageSubmit(event, this, '#overskriftPfp');"
+                                        accept="image/*">
                                     <input type="hidden" name="field" value="profilePicture">
                                 </div>
                             </form>
 
                             <form action="/updateProfile" method="POST" target="invisibleIframe">
                                 <div class="inputfield">
-                                    <label class="settingssTitles" for="settingsEditProfileBio">Bio</label>
-                                    <textarea id="settingsEditProfileBio" name="settingsEditProfileBio" class="inputTextarea"
+                                    <label class="settingssTitles" for="settingsEditBio">Bio</label>
+                                    <textarea id="settingsEditBio" name="settingsEditBio" class="inputTextarea"
                                         placeholder="Rewrite your bio..." oninput="formSubmit(this, '#profileBio');">{{ user['bio'] }}</textarea>
                                     <input type="hidden" name="field" value="bio">
                                 </div>
@@ -102,7 +112,7 @@
                                 <div class="inputfield">
                                     <label class="settingssTitles" for="settingsEditProfileLocation">Location</label>
                                     <input type="text" id="settingsEditProfileLocation" name="settingsEditProfileLocation"
-                                        class="inputText" value="{{ user['location'] }}" placeholder="Mars" oninput="formSubmit(this, '#profileLocationName');">
+                                        class="inputText" value="{{ user['location'] }}" placeholder="Your current city" oninput="formSubmit(this, '#profileLocationName');">
                                     <input type="hidden" name="field" value="location">
                                 </div>
                             </form>
@@ -184,40 +194,52 @@
                             </form>
                         </div>
                         <div id="settingsEditOther" class="settingsTabKeys" style=" display: none;">
-                            <div class="inputfield">
-                                <label class="settingssTitles" for="settingsEditOtherSound">Bark sounds</label>
-                                <div class="horisontalFlex">
-                                    <div class="radioElement grayBorder">
-                                        <label for="settingsEditOtherSoundOn">On</label>
-                                        <input type="radio" name="barkSound" id="settingsEditOtherSoundOn"
-                                            class="settingsEditOtherSoundType" checked>
-                                    </div>
-                                    <div class="radioElement grayBorder">
-                                        <label for="settingsEditOtherSoundOff">Off</label>
-                                        <input type="radio" name="barkSound" id="settingsEditOtherSoundOff"
-                                            class="settingsEditOtherSoundType">
-                                    </div>
+                            <form action="/updateProfile" method="POST" target="invisibleIframe">
+                                <div class="inputfield">
+                                    <label class="settingssTitles" for="settingsEditOtherSoundOn">Bark sounds</label>
+                                    <div class="horisontalFlex">
+                                        <div class="radioElement grayBorder">
+                                            <label for="settingsEditOtherSoundOn">On</label>
+                                            <input type="radio" name="barkSound" id="settingsEditOtherSoundOn"
+                                                class="settingsEditOtherSoundType" value="1" checked>
+                                        </div>
+                                        <div class="radioElement grayBorder">
+                                            <label for="settingsEditOtherSoundOff">Off</label>
+                                            <input type="radio" name="barkSound" id="settingsEditOtherSoundOff"
+                                                class="settingsEditOtherSoundType" value="2">
+                                        </div>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="inputfield">
-                                <label class="settingssTitles" for="settingsEditOtherText">Bark text</label>
-                                <div class="horisontalFlex">
-                                    <div class="radioElement grayBorder">
-                                        <label for="settingsEditOtherTextOn">On</label>
-                                        <input type="radio" name="barkText" id="settingsEditOtherTextOn"
-                                            class="settingsEditOtherTextType" checked>
-                                    </div>
-                                    <div class="radioElement grayBorder">
-                                        <label for="settingsEditOtherTextOff">Off</label>
-                                        <input type="radio" name="barkText" id="settingsEditOtherTextOff"
-                                            class="settingsEditOtherTextType">
-                                    </div>
+                                <input type="hidden" name="field" value="barkSound">
+                            </form>
 
+                            <form action="/updateProfile" method="POST" target="invisibleIframe">
+                                <div class="inputfield">
+                                    <label class="settingssTitles" for="settingsEditOtherTextOn">Bark text</label>
+                                    <div class="horisontalFlex">
+                                        <div class="radioElement grayBorder">
+                                            <label for="settingsEditOtherTextOn">On</label>
+                                            <input type="radio" name="barkText" id="settingsEditOtherTextOn"
+                                                class="settingsEditOtherTextType" value="1" checked>
+                                        </div>
+                                        <div class="radioElement grayBorder">
+                                            <label for="settingsEditOtherTextOff">Off</label>
+                                            <input type="radio" name="barkText" id="settingsEditOtherTextOff"
+                                                class="settingsEditOtherTextType" value="2">
+                                        </div>
+
+                                    </div>
                                 </div>
-                            </div>
+                                <input type="hidden" name="field" value="barkText">
+                            </form>
 
                         </div>
+                    </div>
+
+                    <div class="settingsSidebarButtonFlex telefontweeting horisontalFlex">
+                        <button class="settingsButtonDiscard settingsSidebarButton genericButton">Discard</button>
+                        <button class="settingsButtonSave settingsSidebarButton vanligKnapp genericButton">Save</button>
                     </div>
 
                 </div>
@@ -248,7 +270,8 @@
                                     <div id="profileBio">{{ user['bio'] }}</div>
 
                                     <div id="profileLocation" {% if not user['location'] %} style="display: none;" {% endif %}>
-                                        <img width="25" height="25" id="profileLocationIcon" src="/static/bilder/map_marker_hul.png" alt="map marker icon">
+                                        <img width="25" height="25" id="profileLocationIcon" src="/static/bilder/map_marker_hul.png"
+                                             alt="map marker icon">
                                         <div id="profileLocationName">{{ user['location'] }}</div>
                                     </div>
 
@@ -269,6 +292,10 @@
 
 
                         </div>
+                    </div>
+                    <div class="settingsSidebarButtonFlex fixedbunnhoyre horisontalFlex">
+                        <button class="settingsButtonDiscard settingsSidebarButton genericButton">Discard</button>
+                        <button class="settingsButtonSave settingsSidebarButton vanligKnapp genericButton">Save</button>
                     </div>
                 </div>
 

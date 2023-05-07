@@ -748,7 +748,7 @@ def updateProfilePOST():
 
         # Bio
         elif field == "bio":
-            bio = request.form.get("settingsEditProfileBio")
+            bio = request.form.get("settingsEditBio")
             if bio is None:
                 logError("No bio in form")
                 return "a"
@@ -796,6 +796,34 @@ def updateProfilePOST():
                 return "a"
 
             users[username]["settings"]["font-size"] = fontSize
+
+        elif field == "barkSound":
+            value = request.form.get("barkText")
+            if not value:
+                logError("No value in form")
+                return "a"
+
+            if value == "0":
+                users[username]["settings"]["theme"] = "light"
+            elif value == "1":
+                users[username]["settings"]["theme"] = "dark"
+            else:
+                logError(f"Unknown value {value} in updateProfilePOST")
+                return "a"
+
+        elif field == "barkText":
+            value = request.form.get("barkSound")
+            if not value:
+                logError("No value in form")
+                return "a"
+
+            if value == "0":
+                users[username]["settings"]["theme"] = "light"
+            elif value == "1":
+                users[username]["settings"]["theme"] = "dark"
+            else:
+                logError(f"Unknown value {value} in updateProfilePOST")
+                return "a"
 
         else:
             logError(f"Unknown field {field} in updateProfilePOST")
