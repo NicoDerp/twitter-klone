@@ -278,7 +278,8 @@ def getAllPostsForUser(user):
     posts = []
     for postID in allposts:
         post = allposts[postID]
-        if post["username"] != user["username"] and post["isPost"]:
+        # if post["username"] != user["username"] and post["isPost"]:
+        if post["username"] != user["username"]:
             u = users[post["username"]]
             post["user"] = u  # TODO only pass items that matter
             posts.append(post)

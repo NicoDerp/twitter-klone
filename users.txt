@@ -26,14 +26,14 @@
             "ooga"
         ],
         "likedPosts": [
-            "3",
             "4",
             "1",
             "7",
             "8",
             "0",
             "9",
-            "10"
+            "10",
+            "3"
         ],
         "pinnedPost": null,
         "bio": "My very cool bio",
@@ -583,6 +583,33 @@
         "joined": "2023-04-29 22:12:27",
         "settings": {
             "theme": "light",
+            "background-color": "#ffffff",
+            "text-color": "#000000",
+            "font": "Inter",
+            "font-size": "1"
+        }
+    },
+    "nybruker": {
+        "username": "nybruker",
+        "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
+        "name": "Ny Bruker",
+        "profileImage": "default_pfp.png",
+        "bannerImage": "default_banner.png",
+        "bannerColor": "#808080",
+        "posts": [
+            "15"
+        ],
+        "comments": [],
+        "followers": [],
+        "following": [],
+        "likedPosts": [],
+        "pinnedPost": null,
+        "bio": "",
+        "status": "Offline",
+        "location": "",
+        "joined": "2023-05-09 21:44:37",
+        "settings": {
+            "theme": "dark",
             "background-color": "#ffffff",
             "text-color": "#000000",
             "font": "Inter",

@@ -1,5 +1,5 @@
 {
-    "count": 15,
+    "count": 16,
     "posts": {
         "0": {
             "username": "nicodatboi",
@@ -174,6 +174,17 @@
             "isPost": true,
             "content": "adeaeda d ad  ed  d d d d  d d",
             "timePosted": "2023-05-02 14:44:40",
+            "comments": [],
+            "likes": 0,
+            "retweets": 10,
+            "views": 10
+        },
+        "15": {
+            "username": "nybruker",
+            "id": "15",
+            "isPost": true,
+            "content": "This is a cool tweet",
+            "timePosted": "2023-05-09 21:44:37",
             "comments": [],
             "likes": 0,
             "retweets": 10,
