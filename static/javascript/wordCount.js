@@ -1,7 +1,7 @@
 
 function updateWordCount(textarea) {
     let characterCount = document.querySelector("#characterIndicator");
-    let count = textarea.value.split(' ').length;
+    let count = textarea.value.length;
     characterCount.innerText = count + "/250";
     if (count > 250) {
         characterCount.classList.add("invalidCharacterIndicator");
@@ -12,7 +12,7 @@ function updateWordCount(textarea) {
 
 function submitBark() {
     let textarea = document.querySelector("#tweetTextArea");
-    let count = textarea.value.split(' ').length;
+    let count = textarea.value.length;
 
     if (count > 250) {
         let errorMessage = document.querySelector("#errorMessage");

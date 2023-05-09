@@ -1,190 +1,38 @@
 {
-    "count": 16,
+    "count": 3,
     "posts": {
         "0": {
             "username": "nicodatboi",
             "id": "0",
-            "isPost": true,
+            "type": "post",
             "content": "This is a cool tweet",
-            "timePosted": "2023-04-26 17:23:49",
+            "timePosted": "2023-05-09 22:06:46",
             "comments": [
-                "2",
-                "9"
+                "2"
             ],
-            "likes": 2,
+            "likes": 0,
             "retweets": 10,
             "views": 10
         },
         "1": {
-            "username": "ooga",
+            "username": "test",
             "id": "1",
-            "isPost": true,
+            "type": "post",
             "content": "This is a cool tweet",
-            "timePosted": "2023-04-26 17:36:54",
-            "comments": [
-                "3",
-                "4",
-                "5"
-            ],
-            "likes": 2,
+            "timePosted": "2023-05-09 22:09:38",
+            "comments": [],
+            "likes": 0,
             "retweets": 10,
             "views": 10
         },
         "2": {
-            "username": "ooga",
+            "username": "test",
             "id": "2",
-            "isPost": false,
-            "content": "Super cool comment",
-            "timePosted": "2023-04-26 17:48:02",
-            "comments": [
-                "11"
-            ],
-            "likes": 0,
-            "retweets": 10,
-            "views": 10
-        },
-        "3": {
-            "username": "nicodatboi",
-            "id": "3",
-            "isPost": false,
-            "content": "Hei hei",
-            "timePosted": "2023-04-27 17:33:01",
-            "comments": [
-                "6"
-            ],
-            "likes": 1,
-            "retweets": 10,
-            "views": 10
-        },
-        "4": {
-            "username": "nicodatboi",
-            "id": "4",
-            "isPost": false,
-            "content": "aaa",
-            "timePosted": "2023-04-27 17:33:30",
-            "comments": [],
-            "likes": 1,
-            "retweets": 10,
-            "views": 10
-        },
-        "5": {
-            "username": "nicodatboi",
-            "id": "5",
-            "isPost": false,
-            "content": "Veldig kul reply",
-            "timePosted": "2023-04-27 17:37:08",
-            "comments": [],
-            "likes": 0,
-            "retweets": 10,
-            "views": 10
-        },
-        "6": {
-            "username": "nicodatboi",
-            "id": "6",
-            "isPost": false,
-            "content": "Enda en reply",
-            "timePosted": "2023-04-27 17:37:14",
-            "comments": [],
-            "likes": 0,
-            "retweets": 10,
-            "views": 10
-        },
-        "7": {
-            "username": "nicodatboi",
-            "id": "7",
-            "isPost": true,
-            "content": "Very cool first bark",
-            "timePosted": "2023-04-29 22:07:54",
-            "comments": [
-                "8"
-            ],
-            "likes": 2,
-            "retweets": 10,
-            "views": 10
-        },
-        "8": {
-            "username": "nicodatboi",
-            "id": "8",
-            "isPost": false,
-            "content": "Wow so cool!",
-            "timePosted": "2023-04-29 22:08:09",
-            "comments": [],
-            "likes": 1,
-            "retweets": 10,
-            "views": 10
-        },
-        "9": {
-            "username": "nicodatboi",
-            "id": "9",
-            "isPost": false,
-            "content": "Ooga booga",
-            "timePosted": "2023-04-29 22:24:03",
-            "comments": [],
-            "likes": 1,
-            "retweets": 10,
-            "views": 10
-        },
-        "10": {
-            "username": "nicodatboi",
-            "id": "10",
-            "isPost": true,
-            "content": "Yes hello",
-            "timePosted": "2023-04-29 22:24:14",
-            "comments": [],
-            "likes": 1,
-            "retweets": 10,
-            "views": 10
-        },
-        "11": {
-            "username": "ooga",
-            "id": "11",
-            "isPost": false,
-            "content": "No",
-            "timePosted": "2023-04-30 18:47:19",
-            "comments": [],
-            "likes": 0,
-            "retweets": 10,
-            "views": 10
-        },
-        "12": {
-            "username": "ooga",
-            "id": "12",
-            "isPost": true,
-            "content": " aa a a a a a a a a a a",
-            "timePosted": "2023-05-02 14:43:16",
-            "comments": [],
-            "likes": 0,
-            "retweets": 10,
-            "views": 10
-        },
-        "13": {
-            "username": "ooga",
-            "id": "13",
-            "isPost": true,
-            "content": "a a a a a a  a a a a a ",
-            "timePosted": "2023-05-02 14:43:56",
-            "comments": [],
-            "likes": 0,
-            "retweets": 10,
-            "views": 10
-        },
-        "14": {
-            "username": "ooga",
-            "id": "14",
-            "isPost": true,
-            "content": "adeaeda d ad  ed  d d d d  d d",
-            "timePosted": "2023-05-02 14:44:40",
-            "comments": [],
-            "likes": 0,
-            "retweets": 10,
-            "views": 10
-        },
-        "15": {
-            "username": "nybruker",
-            "id": "15",
-            "isPost": true,
-            "content": "This is a cool tweet",
-            "timePosted": "2023-05-09 21:44:37",
+            "parentID": "0",
+            "parentUsername": "nicodatboi",
+            "type": "comment",
+            "content": "hei jeg heter Nicolai",
+            "timePosted": "2023-05-09 22:13:55",
             "comments": [],
             "likes": 0,
             "retweets": 10,

@@ -76,7 +76,7 @@ def newPost(username, content):
     post = {
         "username": username,
         "id": postID,
-        "isPost": True,
+        "type": "post",
         "content": content,
         "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "comments": [],
@@ -103,12 +103,19 @@ def newComment(username, targetPostID, content):
     with open("posts.txt", "r") as f:
         posts = json.load(f)
 
+    for pid in posts["posts"]:
+        if pid == targetPostID:
+            parentUsername = posts["posts"][pid]["username"]
+            break
+
     commentID = str(posts["count"])
 
     comment = {
         "username": username,
         "id": commentID,
-        "isPost": False,
+        "parentID": targetPostID,
+        "parentUsername": parentUsername,
+        "type": "comment",
         "content": content,
         "timePosted": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "comments": [],
