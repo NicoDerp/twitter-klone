@@ -426,6 +426,7 @@ body.customTheme {
     width: 100%;
     border-bottom: rgba(222, 230, 232, 0.6) solid 1px;
     transition-duration: 200ms;
+    display: flex;
     /* margin-bottom: 1000px; */
 }
 
