@@ -135,8 +135,8 @@
 
                         <div id="allFeed" style="display: none;">
                             {% for post in allPosts %}
-                                <div class="retweetWrapper">
-                                    <div class="tweet" onclick="redirectToPost(event, '/viewpost/{{ post['id'] }}');" style="cursor: pointer;">
+                                <div class="tweet" onclick="redirectToPost(event, '/viewpost/{{ post['id'] }}');" style="cursor: pointer;">
+                                    <div class="retweetWrapper">
                                         {% if post['type'] == 'retweet' %}
                                             <div class="retweetIndikator">
                                                 <img class="retweetIcon" src="/static/bilder/retweet.png" alt="rebark" width="15" height="15">
